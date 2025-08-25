@@ -4,6 +4,7 @@ import time
 
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.widgets import Slider
 
 
 class Plotter:
@@ -48,6 +49,7 @@ class Plotter:
         self.setpoint_plot.set_ydata([self.data['setpoint']])
 
         self.ax1.set_xlim(0, self.data['time'][-1])
+        self.ax1_2.set_xlim(0, self.data['time'][-1])
         self.ax1.set_ylim(0, max_temperature)
 
         self.voltage_plot.set_xdata([self.data['time']])
@@ -61,27 +63,7 @@ class Plotter:
         self.i_plot.set_ydata([self.data['extra_data']['i']])
         self.d_plot.set_xdata([self.data['time']])
         self.d_plot.set_ydata([self.data['extra_data']['d']])
-
-        if len(self.data['time']) > 20:
-            n = -20
-        else:
-            n = -1
-
-        max_y_scale = max(
-            max(self.data['extra_data']['max_voltage'][n:]),
-            max(self.data['extra_data']['p'][n:]),
-            max(self.data['extra_data']['i'][n:]),
-            max(self.data['extra_data']['d'][n:]),
-        )
-        min_y_scale = min(
-            min(self.data['extra_data']['max_voltage'][n:]),
-            min(self.data['extra_data']['p'][n:]),
-            min(self.data['extra_data']['i'][n:]),
-            min(self.data['extra_data']['d'][n:]),
-        )
-        print(max_y_scale, min_y_scale)
         self.ax3.set_xlim(0, self.data['time'][-1])
-        self.ax3.set_ylim(min_y_scale, max_y_scale)
 
         self.fig.canvas.draw()
         self.fig.canvas.flush_events()
@@ -104,11 +86,27 @@ class Plotter:
         self.ax1.set_ylabel('Temperature / C')
         self.ax1.legend(loc=2, prop={"size": 8})
         self.ax1_2 = self.ax1.twinx()
-        # self.res_plot, = self.ax1_2.plot(
-        #     self.data['time'],
-        #     np.array(self.data['temperature']) - np.array(self.data['setpoint']),
-        #     'k.', label='Residual'
-        # )
+        (self.res_plot,) = self.ax1_2.plot(
+            self.data['time'],
+            np.array(self.data['temperature']) - np.array(self.data['setpoint']),
+            'k.',
+            label='Residual',
+        )
+        self.ax1_2.set_ylabel('Error / C')
+        self.ax1_2.set_ylim(-10, 10)
+        ax_slider = self.fig.add_axes([0.1, 0.9, 0.85, 0.05])
+        max_diff_slider = Slider(
+            ax=ax_slider,
+            label='Scale',
+            valmin=1,
+            valmax=50,
+            valinit=10,
+        )
+
+        def update_max_diff(val):
+            self.ax1_2.set_ylim(max_diff_slider.val * -1, max_diff_slider.val)
+
+        max_diff_slider.on_changed(update_max_diff)
 
         # Voltage plot
         self.ax2 = self.fig.add_subplot(3, 1, 2)
@@ -127,6 +125,21 @@ class Plotter:
         self.ax3.set_xlabel('Time / s')
         self.ax3.set_ylabel('Magnitude')
         self.ax3.legend(loc=2, prop={"size": 8})
+        self.ax3.set_ylim(-20, 20)
+
+        ax_slider_max_input = self.fig.add_axes([0.1, 0.05, 0.85, 0.05])
+        max_input_slider = Slider(
+            ax=ax_slider_max_input,
+            label='Scale',
+            valmin=1,
+            valmax=100,
+            valinit=20,
+        )
+
+        def update_max_input(val):
+            self.ax3.set_ylim(max_input_slider.val * -1, max_input_slider.val)
+
+        max_input_slider.on_changed(update_max_input)
 
         self.fig.canvas.mpl_connect('close_event', self.on_close)
         return
