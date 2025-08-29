@@ -1,0 +1,711 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language danish
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip halfline
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+PID Temperaturkontrol
+\end_layout
+
+\begin_layout Section
+Introduktion
+\end_layout
+
+\begin_layout Standard
+Formålet med denne øvelse er at opnå kendskab til et meget anvendt kontrol\SpecialChar softhyphen
+system til at holde en given variabel konstant i et system,
+ hvor variablen er påvirket af omskiftelige omgivelser,
+ nemlig PID-regulering.
+ Denne form for regulering blev oprindelig opfundet i forbindelse med regulering af mekaniske systemer såsom dampmaskiner og skibe,
+ men kan benyttes til regulering inden for en næsten uendelig mængde områder.
+ Vi ønsker i denne øvelse at regulere temperaturen i et mindre system,
+ som består af en ganske almindelig elektrisk pære,
+ der er omsluttet af en kop.
+ I dette system kan vi variere spændingsfaldet over pæren og derved styre dens opvarmning.
+ Temperaturen af pæren måles med et termoelement,
+ der udnytter Seebeck-effekten til at generere en spændings\SpecialChar softhyphen
+forskel over termoelementet,
+ der er proportional med temperaturgradienten i elementet.
+\end_layout
+
+\begin_layout Subsection
+Opgave
+\end_layout
+
+\begin_layout Standard
+Hvis følsomheden af termoelementet er 41 
+\begin_inset Formula $\mu$
+\end_inset
+
+V/K med en forstærkning på 100 og datakortet har en 16 bit opløsning på sin 0 − 10 V indgang,
+ hvad er så den mindste ændring i temperaturen vi kan forvente at måle?
+\end_layout
+
+\begin_layout Subsection
+Udstyr og dataopsamling
+\end_layout
+
+\begin_layout Standard
+PC,
+ dataopsamlingskort NI-6251,
+ NI SC-2345,
+ programmerbar strømforsyning (ISO-TECH IPS-2010),
+ RS-232 forbindelse til PC’en),
+ glødepære (150 W),
+ termo\SpecialChar softhyphen
+par (type K),
+ kop samt kabeler.
+\end_layout
+
+\begin_layout Standard
+Reguleringen implementeres i Python - dette er dog en øvelse i PID-regulering,
+ ikke i Python,
+ og I får derfor udleveret skelettet til programmet,
+ inklusiv et eksempel på en simpel regulering.
+ Jeres opgave er udvide dette program til en fuld PID-regulering samt at eksperimentere med regulerings\SpecialChar softhyphen
+parametre for at undersøge deres betydning for dens ydelse.
+ Programmet vil være tilgængeligt på computerne,
+ og kan også findes på Github:
+ 
+\end_layout
+
+\begin_layout Verbatim*
+https://github.com/nanomade/Exercises10870/tree/main/PID
+\end_layout
+
+\begin_layout Section
+Tænd/sluk regulering
+\end_layout
+
+\begin_layout Standard
+Lad os starte med at betragte en simpel tænd/sluk-regulering,
+ hvor den reguler\SpecialChar softhyphen
+bare ydelse 
+\begin_inset Formula $P$
+\end_inset
+
+ enten kan tændes ved maksimal ydelse 
+\begin_inset Formula $P=P_{𝑚𝑎𝑥}$
+\end_inset
+
+ eller slukkes 
+\begin_inset Formula $P=0$
+\end_inset
+
+.
+ Reguleringen af ydelsen bruges så til at regulere en given variabel 
+\begin_inset Formula $T$
+\end_inset
+
+ i forhold til et forudbestemt sætpunkt 
+\begin_inset Formula $T_{s}$
+\end_inset
+
+.
+ Et klassisk eksempel på en tænd/sluk regulering er en ovn.
+ De fleste ovne er udstyret med et varmeelement som kan være enten tændt eller slukket,
+ men ikke har nogen mellemindstillinger.
+ Tænder vi nu ovnen med et sætpunkt på eksempelvis 
+\begin_inset Formula $200^{\circ}\text{C}$
+\end_inset
+
+ vil varmelegmet tænde fordi ovnen (formentlig) er under 
+\begin_inset Formula $200^{\circ}\text{C}$
+\end_inset
+
+.
+ Temperaturen vil nu gradvist stige indtil den er over setpunktet hvorefter varmelegmet slukker.
+ Når ovnen igen er under setpunktet,
+ tænder varmelegmet igen - denne process vil fortsætte så længe setpunktet fastholdes og den faktiske temperatur vil svinge omkring 
+\begin_inset Formula $200^{\circ}\text{C}$
+\end_inset
+
+ med en amplitude og periode som afhænger af en lang række parametere,
+ eksempelvis effekten af varmelegmet,
+ tidskonstanten af systemet,
+ hvor velisoleret ovnen er,
+ og om der sker faseovergange i den opvarmede mad.
+\end_layout
+
+\begin_layout Subsection
+Opgave
+\end_layout
+
+\begin_layout Standard
+Find andre eksempler på tænd/sluk regulering fra jeres hverdag.
+ 
+\end_layout
+
+\begin_layout Subsection
+Opgave
+\end_layout
+
+\begin_layout Standard
+Hvorfor er en lyskontakt ikke et eksempel på denne type af tænd/sluk regulering?
+\end_layout
+
+\begin_layout Subsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+I har fået udleveret et Python program som implementerer en tænd-sluk regulering.
+ Prøv programmet og se hvordan det opfører sig.
+ Prøv at eksperimentere med forskellige værdier af 
+\begin_inset Formula $max\_voltage$
+\end_inset
+
+ og se hvilken indflydelse det har på reguleringen.
+ Undgå at lade temperaturen kommer over cirka 
+\begin_inset Formula $350^{\circ}\text{C}$
+\end_inset
+
+ da forbindelsesledningerne til pæren begynder at få det varmere end de bryder sig om.
+ 
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename bang_bang_regulator.png
+	display false
+	width 12cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:temp_bang_bang"
+
+\end_inset
+
+Eksempel på on/off regulering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+PID-regulering
+\end_layout
+
+\begin_layout Standard
+Vi så i forrige afsnit,
+ at tænd/sluk-regulering vil resultere i en svingende variabel,
+ som funktion af tiden.
+ Dette er måske tilfredsstillende i visse tilfælde,
+ men i andre situationer vil disse udsving være alt for store – og i øvrigt vil de pludselige ændringer mellem fuld effekt og nul effekt over tid give unødig slitage i hardwaren - forestiller man sig eksempelvis at reguleringen er af kursen på et skib,
+ vil en regulering som udelukkende tillader fuldt ror-udslag åbenlyst ikke fungere i længden.
+ I disse tilfælde kan vi benytte en PID-regulering,
+ der er en algoritme som tillader trinløs regulering af den styrende parameter.
+ Den består af tre funktioner med meget forskellig virkemåde:
+ Proportional-,
+ Integral,
+ og Differential-regulering.
+ Vi vil i det følgende gennemgå disse virkemåder i detaljer,
+ så I kan få en fornemmelse for deres betydning i reguleringen.
+\end_layout
+
+\begin_layout Subsection
+Proportional-regulering
+\end_layout
+
+\begin_layout Standard
+Lad os tage udgangspunkt i et tog som i henhold til køreplanen ønsker at tilbagelægge en afstand med en på forhånd fastlagt fart.
+ Toget hastighed kan selvsagt ikke forudsiges alene ud fra motoreffekten - ydre omstændigheder så som last,
+ vind og hældning af terrænet vil betyde at en given effekt ikke giver en entydig hastighed.
+ For at holde køreplanen kan toget så vælge at køre noget af strækningen med fuld motoreffekt og andre dele med motoren slukket - denne metode vil godt kunne bringe toget frem til rette tid,
+ men de pludselige accelerationer vil næppe være behagelige for passagererne
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ (og katastrofal for salgtet af kaffe på turen).
+ En langt bedre løsning vil være at regulere motoreffekten trinløst så toget opnår den ønskede hastighed.
+ I første approksimation forsøger vi os med en model hvor motoreffekten,
+ 
+\begin_inset Formula $P$
+\end_inset
+
+,
+ reguleres efter hvor langt farten er fra den ønskede værdi.
+ Rent matematisk kan vi skrive 
+\begin_inset Formula 
+\begin{equation}
+P(t)=K_{P}\cdot E(t)\label{eq:proportional_equation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Her er 
+\begin_inset Formula $E(t)=v_{s}-v(t)$
+\end_inset
+
+ forskellen mellem sætpunktet og den aktuelle værdi,
+ og 
+\begin_inset Formula $K_{P}$
+\end_inset
+
+ er en omregningsfaktor hvis enhed afhænger af dimensionerne for henholdsvis variabel og ydelse.
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename p_regulator.png
+	display false
+	width 12cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:temp_P_regulering"
+
+\end_inset
+
+Eksempel på P-regulering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Øvelse
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Øvelse_p_regulering"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I har ikke et tog til rådighed,
+ men brug i stedet pære-i-kop opstillingen til at afprøve en propertional regulering ved at udvide Python-programmet med en P-regulering.
+ Teknisk gøres dette lettest ved at lave en ny klasse efter samme princip som 
+\begin_inset Formula $BangBangRegulator$
+\end_inset
+
+ hvor I nedarver 
+\begin_inset Formula $Regulator$
+\end_inset
+
+ og implementerer den nødvendige funktionalitet i form af ligning
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:proportional_equation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Et tip er at vælge et forholdsvist højt sætpunkt for temperaturen,
+ fx 
+\begin_inset Formula $200^{\circ}\text{C}$
+\end_inset
+
+ - på den måde køler pæren nogenlunde hurtigt,
+ og det bliver lettere at lave eksperimenter uden at vente urimeligt længe på at pæren køler mellem de enkelte forsøg.
+ 
+\end_layout
+
+\begin_layout Itemize
+Find forstærkningen 
+\begin_inset Formula $K_{P}$
+\end_inset
+
+,
+ så temperaturen kommer tættest på sætpunktet uden at den begynder at svinge for meget omkring dette.
+\end_layout
+
+\begin_layout Itemize
+Beskriv,
+ hvordan P-reguleringen virker for forskellige værdier af 
+\begin_inset Formula $K_{P}$
+\end_inset
+
+,
+ prøv med lave værdier og høje værdier (fx 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ og 
+\begin_inset Formula $2$
+\end_inset
+
+).
+ For hvilke værdier af 
+\begin_inset Formula $K_{P}$
+\end_inset
+
+ ligner P-reguleringen en tænd/sluk-regulering?
+\end_layout
+
+\begin_layout Subsection
+Integral-regulering
+\end_layout
+
+\begin_layout Standard
+Du så formentlig i øvelse
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Øvelse_p_regulering"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ at P-reguleringen ikke rammer i setpunktet,
+ men opnår ligevægt ved en tempetur under dette.
+ Dette skyldes naturligvis,
+ at med en ren P-regulering bliver effekten nul når det ønskede setpunkt er opnået.
+ Til at afhjælpe denne situation ønsker vi en funktion,
+ der øger effekten gradvist,
+ så længe farten er under sætpunktet.
+ Denne funktion kan repræsenteres ved hjælp af integralet over fejlen,
+ da dette vil stige,
+ hvis fejlen ikke mindskes numerisk.
+ Tilføjes dette til ligning (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:proportional_equation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) får vi 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+P(t)=K_{P}E(t)+K_{I}\int_{0}^{t}E(t')dt'\label{eq:prop_integral}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Her er 
+\begin_inset Formula $K_{I}$
+\end_inset
+
+ en præfaktor til integralværdien,
+ som i lighed med propertionalleddet 
+\begin_inset Formula $K_{P}$
+\end_inset
+
+ kan justeres efter ønske.
+ Integral-reguleringen er det vigtigste led for at holde variablen ved sætpunktet for alle systemer som kræver en effekt for at holde et setpunkt (da P-leddet jo her er nul).
+ 
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename pi_regulator.png
+	display false
+	width 12cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:temp_PI_regulering"
+
+\end_inset
+
+Eksempel på PI-regulering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Udvid Python programmet med en PI-regulering.
+ Plot og kommentér på I-reguleringens virkemåde samt kommentér på forbedringerne i forhold til P-reguleringen.
+\end_layout
+
+\begin_layout Subsection
+Differential-regulering
+\end_layout
+
+\begin_layout Standard
+I klassisk PID-regulering findes udover P- og I-leddet også et differentialled som har til hensigt at dæmpe reguleringens respons på store ændringer.
+ Vi tilføjer dette til ligning
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:prop_integral"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ og får:
+\begin_inset Formula 
+\begin{equation}
+P(t)=K_{P}E(t)+K_{I}\int_{0}^{t}E(t')dt'+K_{D}\frac{d}{dt}E(t)\label{eq:prop_integral_diff}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Udvid programmet med en PID-regulering.
+ Plot og kommentér på reguleringens virkemåde.
+ Ser I en forbedring i forhold til PI-reguleringen?
+\end_layout
+
+\begin_layout Section
+But wait;
+ there's more
+\end_layout
+
+\begin_layout Standard
+Hvis I har tid efter at have implementeret og afprøvet de tre dele af PID-reguleringen er her et par ekstra opgaver I kan kaste jer over.
+\end_layout
+
+\begin_layout Subsection
+Overshoot
+\end_layout
+
+\begin_layout Standard
+Du har sikkert set,
+ at temperaturen skyder godt over sætpunktet ved start.
+ Dette er helt normalt og skyldes ”hukommelsen” i integral-reguleringen – værdien af integralet stiger så længe temperaturen er under sætpunktet og begynder først at falde,
+ når temperaturen kommer over sætpunktet.
+ Det er typisk ikke muligt at undgå dette ved alene at stille på parametrene (
+\begin_inset Formula $K_{P}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $K_{I}$
+\end_inset
+
+ og 
+\begin_inset Formula $K_{D}$
+\end_inset
+
+),
+ med mindre man accepterer at den normale drift forringes.
+ I mange situationer kan problemet dog reduceres dramatisk ved simpelthen at indføre i program-logikken at integralleddet kun opdateres når man er passende tæt på setpunktet - eksempelvis når bidraget fra p-ledet er mindre end det maksimale udslag
+\end_layout
+
+\begin_layout Subsubsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Prøv at implementere en forbedret algoritme som mindsker overshoot-problemet,
+ eksempelvis via metoden nævnt ovenfor.
+\end_layout
+
+\begin_layout Subsection
+Variabelt setpunkt
+\end_layout
+
+\begin_layout Standard
+Meget ofte er det ønskede setpunkt ikke en konstant værdi,
+ men en mere kompli\SpecialChar softhyphen
+ceret funktion.
+ I eksemplet med toget,
+ vil der eksempelvis kunne være områder på strækningen hvor den ønskede hastighed var lavere end andre fordi man passerer en station uden at stoppe.
+ For temperaturreguleringer kunne der være tale om en process hvor man ønsker at udstætte sin prøve for forskellige temperaturer i forskellige tidsintervaller - helt generelt kan man vælge at se setpunktet som en funktion af tid fremfor en konstant værdi.
+\end_layout
+
+\begin_layout Subsubsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Implementer et variabelt setpunkt - hvordan det skal variere er op til jer selv - og afprøv om jeres PID kan følge den ønskede tidsafhængighed.
+\end_layout
+
+\end_body
+\end_document
