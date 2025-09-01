@@ -123,7 +123,8 @@ Hvis følsomheden af termoelementet er 41
 \end_inset
 
 V/K med en forstærkning på 100 og datakortet har en 16 bit opløsning på sin 0 − 10 V indgang,
- hvad er så den mindste ændring i temperaturen vi kan forvente at måle?
+ hvad er så den mindste ændring i temperaturen,
+ vi kan forvente at måle?
 \end_layout
 
 \begin_layout Subsection
@@ -182,7 +183,8 @@ bare ydelse
 \begin_inset Formula $T$
 \end_inset
 
- i forhold til et forudbestemt sætpunkt 
+ i forhold til et forud\SpecialChar softhyphen
+bestemt sætpunkt 
 \begin_inset Formula $T_{s}$
 \end_inset
 
@@ -219,14 +221,6 @@ Opgave
 \begin_layout Standard
 Find andre eksempler på tænd/sluk regulering fra jeres hverdag.
  
-\end_layout
-
-\begin_layout Subsection
-Opgave
-\end_layout
-
-\begin_layout Standard
-Hvorfor er en lyskontakt ikke et eksempel på denne type af tænd/sluk regulering?
 \end_layout
 
 \begin_layout Subsection
@@ -317,17 +311,7 @@ Lad os tage udgangspunkt i et tog som i henhold til køreplanen ønsker at tilba
  Toget hastighed kan selvsagt ikke forudsiges alene ud fra motoreffekten - ydre omstændigheder så som last,
  vind og hældning af terrænet vil betyde at en given effekt ikke giver en entydig hastighed.
  For at holde køreplanen kan toget så vælge at køre noget af strækningen med fuld motoreffekt og andre dele med motoren slukket - denne metode vil godt kunne bringe toget frem til rette tid,
- men de pludselige accelerationer vil næppe være behagelige for passagererne
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
- (og katastrofal for salgtet af kaffe på turen).
+ men de pludselige accelerationer vil næppe være behagelige for passagererne (og katastrofal for salgtet af kaffe på turen).
  En langt bedre løsning vil være at regulere motoreffekten trinløst så toget opnår den ønskede hastighed.
  I første approksimation forsøger vi os med en model hvor motoreffekten,
  
@@ -696,7 +680,8 @@ Meget ofte er det ønskede setpunkt ikke en konstant værdi,
 ceret funktion.
  I eksemplet med toget,
  vil der eksempelvis kunne være områder på strækningen hvor den ønskede hastighed var lavere end andre fordi man passerer en station uden at stoppe.
- For temperaturreguleringer kunne der være tale om en process hvor man ønsker at udstætte sin prøve for forskellige temperaturer i forskellige tidsintervaller - helt generelt kan man vælge at se setpunktet som en funktion af tid fremfor en konstant værdi.
+ For temperatur\SpecialChar softhyphen
+reguleringer kunne der være tale om en process hvor man ønsker at udstætte sin prøve for forskellige temperaturer i forskellige tidsintervaller - helt generelt kan man vælge at se setpunktet som en funktion af tid fremfor en konstant værdi.
 \end_layout
 
 \begin_layout Subsubsection
