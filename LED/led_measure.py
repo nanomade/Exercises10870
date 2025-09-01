@@ -74,7 +74,7 @@ class DataWriter:
     """
     This class provides a way to store two data-files with the same data. One
     file is named with a unique name that ensure that no data is lost. The
-    other file is always called `pid_plot.csv` and will be used by the plotting
+    other file is always called `led_plot.csv` and will be used by the plotting
     programm.
     """
 
