@@ -53,7 +53,7 @@ class PowerSupply:
             actual_voltage = self.max_voltage
 
         self.voltage_setpoint = actual_voltage
-        cmd = 'SV {:.2f}'.format(actual_voltage)
+        cmd = 'SV {:05.2f}'.format(actual_voltage)
         self.comm.write(cmd)
 
     def set_current_limit(self, current):
@@ -66,7 +66,7 @@ class PowerSupply:
             actual_current = 0.01
         else:
             actual_current = 9.99  # Max for the device
-        cmd = 'SI {:.2f}'.format(actual_current)
+        cmd = 'SI {:05.2f}'.format(actual_current)
         self.comm.write(cmd)
 
 
