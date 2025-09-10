@@ -269,16 +269,19 @@ nolink "false"
 \end_layout
 
 \begin_layout Section
-Teori
-\end_layout
-
-\begin_layout Standard
-Opgave 1:
- Opstil et udtryk for impedansen 𝑍 af systemet i Figur 1a.
+Impedans og overføringsfunktion
 \end_layout
 
 \begin_layout Subsection
-Impedans og overføringsfunktion
+Opgave
+\end_layout
+
+\begin_layout Standard
+Opstil et udtryk for impedansen 𝑍 af systemet i Figur 1a.
+\end_layout
+
+\begin_layout Subsection
+Hvordan måler vi både spænding og strøm?
 \end_layout
 
 \begin_layout Standard
@@ -345,18 +348,26 @@ Vi får altså IKKE mulighed for at karakterisere systemet ad den vej!
  før du læser videre!
  Måske tænkte du om ikke vi kunne bruge definition af impedansen hvori strømstyrken også indgår.
  Så hvorfor ikke blot indsætte et amperemeter?
- Det kan man i princippet godt.
- Ofte ønsker man dog hellere at måle en spænding.
- Det kan gøres ved at indsætte en kendt formodstand og dernæst bestemme strømstyrken gennem systemet ved at måle spændingen 𝑢𝑓 over formodstanden 
-\begin_inset Formula $R_{shunt}$
+ Det kan man i princippet godt,
+ i praksis er det dog typisk lettere at måle stømmen i form af en spændingsmåling over en kendt formodstand.
+ Da denne modstand er rent ohmsk,
+ man bestemme strømstyrken gennem systemet ved at måle spændingen 
+\begin_inset Formula $U_{shunt}$
 \end_inset
 
- .'
+ over formodstanden via 
+\begin_inset Formula $I=\frac{U_{shunt}}{R_{shunt}}$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Subsection
+Opgave
 \end_layout
 
 \begin_layout Standard
-Opgave 2:
- Gør rede for at overføringsfunktionen med formodstand indsat bliver
+Gør rede for at overføringsfunktionen med formodstand indsat bliver
 \begin_inset Formula 
 \[
 H(\omega)=\frac{Z}{R_{shunt}+Z}
@@ -367,9 +378,12 @@ H(\omega)=\frac{Z}{R_{shunt}+Z}
 
 \end_layout
 
+\begin_layout Subsection
+Opgave
+\end_layout
+
 \begin_layout Standard
-Opgave 3:
- Vis at impedansen med formodstand indsat kan bestemmes ved:
+Vis at impedansen med formodstand indsat kan bestemmes ved:
 \begin_inset Formula 
 \[
 Z=\frac{U_{ud}}{U_{shunt}}R_{shunt}
@@ -380,9 +394,12 @@ Z=\frac{U_{ud}}{U_{shunt}}R_{shunt}
 
 \end_layout
 
+\begin_layout Section
+Opgave
+\end_layout
+
 \begin_layout Standard
-Opgave 4:
- Vis at den numeriske værdi af impedansens imaginærdel topper ved vinkelfrekvensen
+Vis at den numeriske værdi af impedansens imaginærdel topper ved vinkelfrekvensen
 \begin_inset Formula 
 \[
 \omega_{top}=\frac{1}{R_{parallel}C_{parallel}}
