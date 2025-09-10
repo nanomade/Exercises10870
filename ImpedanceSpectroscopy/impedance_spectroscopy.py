@@ -176,8 +176,6 @@ def test_a_frequency(freq):
     return impedance, phase_shift
 
 
-
-
 if __name__ == "__main__":
     # test_a_frequency(1362)
     # 1/0

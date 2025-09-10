@@ -26,7 +26,7 @@ def plot_results(results):
 
 
 if __name__ == '__main__':
-    
+
     results = pickle.load(open("results.p", "rb"))
     print(results)
     plot_results(results)
