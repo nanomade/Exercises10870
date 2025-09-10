@@ -282,27 +282,35 @@ Impedans og overføringsfunktion
 \end_layout
 
 \begin_layout Standard
-Impedansen 𝑍 for et system er pr definition forholdet mellem spændingsforskellen 𝑢(𝑡) over
-\end_layout
+Impedansen 𝑍 for et system er pr definition forholdet mellem spændingsforskellen 
+\begin_inset Formula $U(t)$
+\end_inset
 
-\begin_layout Standard
-systemet og strømstyrken 𝑖(𝑡) gennem systemet.
+ over systemet og strømstyrken 
+\begin_inset Formula $I(t)$
+\end_inset
+
+ gennem systemet.
  For en kompleks impedans som her,
- vil 𝑢(𝑡) ikke
-\end_layout
+ vil 
+\begin_inset Formula $U(t)$
+\end_inset
 
-\begin_layout Standard
-være i fase med 𝑖(𝑡).
+ ikke være i fase med 
+\begin_inset Formula $I(t)$
+\end_inset
+
+.
  Dette giver et praktisk måleteknisk problem:
- Hvis man blot påtrykker en AC-
-\end_layout
+ Hvis man blot påtrykker en AC-spænding 
+\begin_inset Formula $U_{ind}(t)$
+\end_inset
 
-\begin_layout Standard
-spænding 𝑢𝑖𝑛𝑑 (𝑡) på systemet og samtidig forsøger at måle spændingsforskellen 𝑢𝑢𝑑 (𝑡) over
-\end_layout
+ på systemet og samtidig forsøger at måle spændingsforskellen 
+\begin_inset Formula $U_{ud}(t)$
+\end_inset
 
-\begin_layout Standard
-systemet får man uafhængigt af frekvensen altid
+ over systemet får man uafhængigt af frekvensen altid
 \begin_inset Formula 
 \[
 U_{ud}(t)=U_{ind}(t)
@@ -315,7 +323,11 @@ U_{ud}(t)=U_{ind}(t)
 
 \begin_layout Standard
 Det betyder,
- at overføringsfunktionen 𝐻 bliver konstant lig med 1:
+ at overføringsfunktionen 
+\begin_inset Formula $H$
+\end_inset
+
+ bliver konstant lig med 1:
 \begin_inset Formula 
 \[
 H(\omega)=\frac{U_{ud}}{U_{ind}}=1
@@ -330,29 +342,12 @@ H(\omega)=\frac{U_{ud}}{U_{ind}}=1
 Vi får altså IKKE mulighed for at karakterisere systemet ad den vej!
  Hvad kan man finde på?
  Overvej,
-\end_layout
-
-\begin_layout Standard
-før du læser videre!
-\end_layout
-
-\begin_layout Standard
-Måske tænkte du om ikke vi kunne bruge definition af impedansen hvori strømstyrken også indgår.
-\end_layout
-
-\begin_layout Standard
-Så hvorfor ikke blot indsætte et amperemeter?
+ før du læser videre!
+ Måske tænkte du om ikke vi kunne bruge definition af impedansen hvori strømstyrken også indgår.
+ Så hvorfor ikke blot indsætte et amperemeter?
  Det kan man i princippet godt.
- Ofte ønsker man dog
-\end_layout
-
-\begin_layout Standard
-hellere at måle en spænding.
- Det kan gøres ved at indsætte en kendt formodstand og dernæst
-\end_layout
-
-\begin_layout Standard
-bestemme strømstyrken gennem systemet ved at måle spændingen 𝑢𝑓 over formodstanden 
+ Ofte ønsker man dog hellere at måle en spænding.
+ Det kan gøres ved at indsætte en kendt formodstand og dernæst bestemme strømstyrken gennem systemet ved at måle spændingen 𝑢𝑓 over formodstanden 
 \begin_inset Formula $R_{shunt}$
 \end_inset
 
@@ -459,33 +454,44 @@ nolink "false"
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
-Praktiske tips
+Opgave
+\begin_inset CommandInset label
+LatexCommand label
+name "Opgave_tegn_maaling"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Vi foreslår at teste modellen med 𝐶 = 1 μF,
- 𝑅𝑐 = 1000 Ω,
- 𝑅𝑠 = 1000 Ω,
- 𝑅𝑓 = 1000 Ω og benytte
+Tegn på diagrammet hvor og hvordan I foreslår at måle spænding og strøm og forbind til den sorte boks i 
 \end_layout
 
 \begin_layout Standard
-𝑓sample = 50 kHz.
- Med disse valg vil man kunne frembringe et pænt Nyquistplot inden for et
-\end_layout
+Vi foreslår at teste modellen med 
+\begin_inset Formula $C_{parallel}=1\text{F}$
+\end_inset
 
-\begin_layout Standard
-frekvensområde fra 1005 Hz til 5 Hz.
- Den lidt ”skæve” startværdi er valgt for under nedtrapning af
-\end_layout
+,
+ 
+\begin_inset Formula $R_{parallel}=1000\Omega$
+\end_inset
 
-\begin_layout Standard
-frekvensen at undgå at ramme 50 Hz.
- Figur 3 viser,
- hvad der kan ske omkring 50 Hz.
+,
+ 
+\begin_inset Formula $R_{serie}=1000\Omega$
+\end_inset
+
+ og 
+\begin_inset Formula $R_{shunt}=1000\Omega$
+\end_inset
+
+
 \end_layout
 
 \end_body
