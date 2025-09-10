@@ -5,7 +5,6 @@ import pickle
 import nidaqmx
 import numpy as np
 import scipy as sp
-import matplotlib.pyplot as plt
 
 sample_rate = 5e5
 min_val = -1
@@ -173,46 +172,19 @@ def test_a_frequency(freq):
     print(msg.format(1000 * i_amp / 1000, v_amp, 1000 * v_amp / i_amp))
     msg = "PhaseI: {:.2f}.  PhaseU: {:.2f}. Phase-shift: {:.2f}"
     print(msg.format(i_phase, v_phase, phase_shift))
-
     plot_data(x_data, current, voltage)
-
     return impedance, phase_shift
 
 
-def plot_results(results):
-    real = []
-    imaginary = []
-    for val in results.values():
-        real.append(val[0] * np.cos(val[1]))
-        imaginary.append(val[0] * abs(np.sin(val[1])))
-
-    fig = plt.figure()
-    fig.set_size_inches(20, 10)
-
-    axis = fig.add_subplot(1, 1, 1)
-    axis.plot(real, imaginary, "bo", label="")
-
-    axis.set_xlabel("Real")
-    axis.set_ylabel("Imaginary")
-    # axis.set_xlim(0, 50)
-
-    # axis.legend()
-    plt.show()
 
 
 if __name__ == "__main__":
     # test_a_frequency(1362)
     # 1/0
-    run = True
-    if run:
-        results = {}
-        for freq in np.logspace(1.2, 4.5, num=30):
-            print("Testing: {}".format(freq))
-            impedance, phase_shift = test_a_frequency(freq)
-            results[freq] = (impedance, phase_shift)
-            pickle.dump(results, open("results.p", "wb"))
-    else:
-        results = pickle.load(open("results.p", "rb"))
 
-    print(results)
-    plot_results(results)
+    results = {}
+    for freq in np.logspace(1.2, 4.5, num=30):
+        print("Testing: {}".format(freq))
+        impedance, phase_shift = test_a_frequency(freq)
+        results[freq] = (impedance, phase_shift)
+        pickle.dump(results, open("results.p", "wb"))
