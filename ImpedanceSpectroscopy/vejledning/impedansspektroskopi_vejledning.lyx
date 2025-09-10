@@ -1,0 +1,492 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language danish
+\language_package default
+\inputencoding auto-legacy
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip halfline
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Impedansspektroskopi
+\end_layout
+
+\begin_layout Section
+Introduktion
+\end_layout
+
+\begin_layout Standard
+Som I lærte i måleteknisk forløb,
+ er man nødt til at tænke sig om når man måler spænding og strøm i et kredsløb som indeholder kapacitive eller reaktive komponenter.
+ I denne øvelse skal vi dels se på hvilke krav dette stiller til ens målehardware,
+ og dels se et eksempel på en type måling som kan bruges til at karakterisere et sådant system.
+\end_layout
+
+\begin_layout Subsection
+Udstyr og dataopsamling
+\end_layout
+
+\begin_layout Standard
+PC,
+ dataopsamlingskort NI-6251,
+ NI SC-2345,
+ Keysight funktionsgenerator,
+ kabeler samt eventuelt et oscilloscop.
+\end_layout
+
+\begin_layout Standard
+Dataopsamlingen implementeres i Python - dette er dog en øvelse i impedansspektroskopy,
+ ikke i Python,
+ og I får derfor udleveret skelettet til programmet.
+ Programmet vil være tilgængeligt på computerne,
+ og kan også findes på Github:
+ 
+\end_layout
+
+\begin_layout Verbatim*
+
+https://github.com/nanomade/Exercises10870/tree/main/ImpedanceSpectroscopy
+\end_layout
+
+\begin_layout Section
+Eksperimentel opstilling
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename kreds_uden_shunt.svg
+	display false
+	width 12cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:r_r_c_kreds"
+
+\end_inset
+
+Det ønskede kredsløb.
+ Her tegnet i ren form uden hverken måleinstrumenter eller signalkilde.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Kredsløbet vi arbejder med i dagens øvelse er skitseret i figur
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:r_r_c_kreds"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Det består af en ohm modstand,
+ 
+\begin_inset Formula $R_{serie}$
+\end_inset
+
+,
+ i serie med en parallelkobling af endnu en ohmsk modstand,
+ 
+\begin_inset Formula $R_{parallel}$
+\end_inset
+
+ parallelkoblet med en kapacitor,
+ 
+\begin_inset Formula $C_{parallel}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Opgave
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:opgave_beregn_modstand"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bestem den totale elektriske modstand gennem kredsen for henholdsvis en DC strøm og for en AC strøm ved uendelig frekvens.
+\end_layout
+
+\begin_layout Subsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Byg kredsen vist i figur
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:r_r_c_kreds"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ - denne kreds kommer til at indeholde en del ledninger og bliver nemt vanskelig at overskue,
+ tag derfor nogle stykker papir og sæt label på komponenterne - det vil gøre jeres liv meget lettere i løbe af øvelsen.
+ 
+\end_layout
+
+\begin_layout Standard
+Mål med modstandsfunktionen på et multimeter den samlede modstand for et par forskellige værdier af de forskellige komponenter.
+ Passer resultatet med hvad I kom frem til i opgave
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:opgave_beregn_modstand"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Section
+Teori
+\end_layout
+
+\begin_layout Standard
+Opgave 1:
+ Opstil et udtryk for impedansen 𝑍 af systemet i Figur 1a.
+\end_layout
+
+\begin_layout Subsection
+Impedans og overføringsfunktion
+\end_layout
+
+\begin_layout Standard
+Impedansen 𝑍 for et system er pr definition forholdet mellem spændingsforskellen 𝑢(𝑡) over
+\end_layout
+
+\begin_layout Standard
+systemet og strømstyrken 𝑖(𝑡) gennem systemet.
+ For en kompleks impedans som her,
+ vil 𝑢(𝑡) ikke
+\end_layout
+
+\begin_layout Standard
+være i fase med 𝑖(𝑡).
+ Dette giver et praktisk måleteknisk problem:
+ Hvis man blot påtrykker en AC-
+\end_layout
+
+\begin_layout Standard
+spænding 𝑢𝑖𝑛𝑑 (𝑡) på systemet og samtidig forsøger at måle spændingsforskellen 𝑢𝑢𝑑 (𝑡) over
+\end_layout
+
+\begin_layout Standard
+systemet får man uafhængigt af frekvensen altid
+\begin_inset Formula 
+\[
+U_{ud}(t)=U_{ind}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Det betyder,
+ at overføringsfunktionen 𝐻 bliver konstant lig med 1:
+\begin_inset Formula 
+\[
+H(\omega)=\frac{U_{ud}}{U_{ind}}=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vi får altså IKKE mulighed for at karakterisere systemet ad den vej!
+ Hvad kan man finde på?
+ Overvej,
+\end_layout
+
+\begin_layout Standard
+før du læser videre!
+\end_layout
+
+\begin_layout Standard
+Måske tænkte du om ikke vi kunne bruge definition af impedansen hvori strømstyrken også indgår.
+\end_layout
+
+\begin_layout Standard
+Så hvorfor ikke blot indsætte et amperemeter?
+ Det kan man i princippet godt.
+ Ofte ønsker man dog
+\end_layout
+
+\begin_layout Standard
+hellere at måle en spænding.
+ Det kan gøres ved at indsætte en kendt formodstand og dernæst
+\end_layout
+
+\begin_layout Standard
+bestemme strømstyrken gennem systemet ved at måle spændingen 𝑢𝑓 over formodstanden 
+\begin_inset Formula $R_{shunt}$
+\end_inset
+
+ .'
+\end_layout
+
+\begin_layout Standard
+Opgave 2:
+ Gør rede for at overføringsfunktionen med formodstand indsat bliver
+\begin_inset Formula 
+\[
+H(\omega)=\frac{Z}{R_{shunt}+Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Opgave 3:
+ Vis at impedansen med formodstand indsat kan bestemmes ved:
+\begin_inset Formula 
+\[
+Z=\frac{U_{ud}}{U_{shunt}}R_{shunt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Opgave 4:
+ Vis at den numeriske værdi af impedansens imaginærdel topper ved vinkelfrekvensen
+\begin_inset Formula 
+\[
+\omega_{top}=\frac{1}{R_{parallel}C_{parallel}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Signalkilde og strømmåling
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename kreds_med_shunt.svg
+	display false
+	width 12cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:kreds_med_shunt"
+
+\end_inset
+
+Vi har nu tilført en eksten modstand og en signalkilde til kredsen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Som nævnt i indledningen,
+ er spænding og strøm ikke i fase i en kreds som indeholder en kapacitor.
+ Hvis vi skal karakterisere kredsen bliver det derfor nødvendigt med en komponent som kan anvendes til at måle spænding og strøm selvstændigt.
+ Udvid derfor kredsen som vist i fig
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:kreds_med_shunt"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Praktiske tips
+\end_layout
+
+\begin_layout Standard
+Vi foreslår at teste modellen med 𝐶 = 1 μF,
+ 𝑅𝑐 = 1000 Ω,
+ 𝑅𝑠 = 1000 Ω,
+ 𝑅𝑓 = 1000 Ω og benytte
+\end_layout
+
+\begin_layout Standard
+𝑓sample = 50 kHz.
+ Med disse valg vil man kunne frembringe et pænt Nyquistplot inden for et
+\end_layout
+
+\begin_layout Standard
+frekvensområde fra 1005 Hz til 5 Hz.
+ Den lidt ”skæve” startværdi er valgt for under nedtrapning af
+\end_layout
+
+\begin_layout Standard
+frekvensen at undgå at ramme 50 Hz.
+ Figur 3 viser,
+ hvad der kan ske omkring 50 Hz.
+\end_layout
+
+\end_body
+\end_document
