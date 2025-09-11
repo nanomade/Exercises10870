@@ -1,10 +1,13 @@
+import csv
 import math
 import time
 import pyvisa
-import pickle
 import nidaqmx
 import numpy as np
 import scipy as sp
+
+import matplotlib.pyplot as plt
+
 
 sample_rate = 5e5
 min_val = -1
@@ -156,7 +159,6 @@ def set_frequency(freq):
 
 
 def test_a_frequency(freq):
-
     set_frequency(freq)
     x_data, data = read_data(freq)
     current = data[0]
@@ -176,13 +178,21 @@ def test_a_frequency(freq):
     return impedance, phase_shift
 
 
-if __name__ == "__main__":
-    # test_a_frequency(1362)
-    # 1/0
-
+def perform_a_sweep():
     results = {}
     for freq in np.logspace(1.2, 4.5, num=30):
         print("Testing: {}".format(freq))
         impedance, phase_shift = test_a_frequency(freq)
         results[freq] = (impedance, phase_shift)
-        pickle.dump(results, open("results.p", "wb"))
+
+    filename = 'results.csv'
+    datafile = open(filename, 'w', newline='\n')
+    datawriter = csv.writer(datafile, delimiter=';')
+    for freq, values in results.items():
+        datawriter.writerow([freq, values[0], values[1]])
+    datafile.flush()
+
+
+if __name__ == "__main__":
+    test_a_frequency(1)
+    # perform_a_sweep()
