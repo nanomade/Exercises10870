@@ -1,4 +1,4 @@
-import pickle
+import csv
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -20,13 +20,21 @@ def plot_results(results):
     axis.set_xlabel("Real")
     axis.set_ylabel("Imaginary")
     # axis.set_xlim(0, 50)
-
-    # axis.legend()
+    axis.legend()
     plt.show()
 
 
-if __name__ == '__main__':
+def load_data():
+    results = {}
+    with open('results.csv', 'r', newline='\n') as csvfile:
+        reader = csv.reader(csvfile, delimiter=';')
+        for row in reader:
+            freq = float(row[0])
+            results[freq] = (float(row[1]), float(row[2]))
+    return results
 
-    results = pickle.load(open("results.p", "rb"))
+
+if __name__ == '__main__':
+    results = load_data()
     print(results)
     plot_results(results)
