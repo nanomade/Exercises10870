@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="2.01"
-     inkscape:cx="418.90547"
-     inkscape:cy="443.28358"
+     inkscape:zoom="4.62"
+     inkscape:cx="294.48052"
+     inkscape:cy="356.92641"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -52,6 +52,13 @@
        height="7.3517423"
        x="38.790142"
        y="125.17406" />
+    <rect
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1-3-27-1"
+       width="18.341072"
+       height="7.3517423"
+       x="70.353951"
+       y="83.337372" />
     <path
        style="font-variation-settings:'wght' 700;opacity:1;fill:none;stroke:#000000;stroke-width:0.999997;stroke-dasharray:none;stroke-opacity:1"
        d="m 94.6301,128.84993 16.36995,-0.10755"
@@ -84,6 +91,14 @@
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
        d="m 50.061968,120.20283 0.01898,4.54345"
        id="path2-5-9-0" />
+    <path
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 100.31768,86.422734 0.019,8.012072"
+       id="path2-5-9-0-3" />
+    <path
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 61.932035,82.373585 0.01898,9.279316"
+       id="path2-5-9-0-3-2" />
     <path
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999995;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
        d="m 163.67026,94.273381 -0.001,33.636389"
@@ -135,6 +150,14 @@
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999992;stroke-dasharray:none;stroke-opacity:1"
        d="m 56.958159,128.84993 8.467716,-0.10755"
        id="path2-0-0-4" />
+    <path
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999992;stroke-dasharray:none;stroke-opacity:1"
+       d="m 88.873835,87.067018 11.075621,-0.10755"
+       id="path2-0-0-4-8" />
+    <path
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999992;stroke-dasharray:none;stroke-opacity:1"
+       d="m 61.525265,87.067018 8.467716,-0.10755"
+       id="path2-0-0-4-8-2" />
     <circle
        style="font-variation-settings:'wght' 700;opacity:1;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
        id="path4"
@@ -179,6 +202,17 @@
          y="130.31808">R<tspan
    style="font-size:2.82222px"
    id="tspan5-1">shunt</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;font-family:Sans;-inkscape-font-specification:'Sans, @wght=700';font-variation-settings:'wght' 700;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       x="73.736252"
+       y="88.239777"
+       id="text4-0-3"><tspan
+         sodipodi:role="line"
+         id="tspan4-6-6"
+         style="font-size:4.93889px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="73.736252"
+         y="88.239777">1MΩ</tspan></text>
     <rect
        style="font-variation-settings:'wght' 700;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.999994;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:4, 8;stroke-dashoffset:0;stroke-opacity:1"
        id="rect7"
@@ -270,5 +304,13 @@
            id="path2-6-6-9" />
       </g>
     </g>
+    <path
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 59.844122,83.237615 0.01898,7.551256"
+       id="path2-5-9-0-3-2-3" />
+    <path
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999998;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 57.713694,84.303252 0.01898,5.419982"
+       id="path2-5-9-0-3-2-31" />
   </g>
 </svg>

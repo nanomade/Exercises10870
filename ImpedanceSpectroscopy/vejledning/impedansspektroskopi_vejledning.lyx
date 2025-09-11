@@ -111,7 +111,7 @@ Udstyr og dataopsamling
 PC,
  dataopsamlingskort NI-6251,
  NI SC-2345,
- Keysight funktionsgenerator,
+ Keysight 33500B funktionsgenerator,
  kabeler samt eventuelt et oscilloscop.
 \end_layout
 
@@ -196,12 +196,12 @@ nolink "false"
 ,
  i serie med en parallelkobling af endnu en ohmsk modstand,
  
-\begin_inset Formula $R_{parallel}$
+\begin_inset Formula $R_{\|}$
 \end_inset
 
  parallelkoblet med en kapacitor,
  
-\begin_inset Formula $C_{parallel}$
+\begin_inset Formula $C_{\|}$
 \end_inset
 
 .
@@ -220,7 +220,7 @@ name "subsec:opgave_beregn_modstand"
 \end_layout
 
 \begin_layout Standard
-Bestem den totale elektriske modstand gennem kredsen for henholdsvis en DC strøm og for en AC strøm ved uendelig frekvens.
+Beregn den totale elektriske modstand gennem kredsen for henholdsvis en DC strøm og for en AC strøm ved uendelig frekvens.
 \end_layout
 
 \begin_layout Subsection
@@ -244,13 +244,12 @@ nolink "false"
 \end_inset
 
  - denne kreds kommer til at indeholde en del ledninger og bliver nemt vanskelig at overskue,
- tag derfor nogle stykker papir og sæt label på komponenterne - det vil gøre jeres liv meget lettere i løbe af øvelsen.
+ tag derfor nogle Post-It's og sæt label på komponenterne - det vil gøre jeres liv meget lettere i løbet af øvelsen.
  
 \end_layout
 
 \begin_layout Standard
-Mål med modstandsfunktionen på et multimeter den samlede modstand for et par forskellige værdier af de forskellige komponenter.
- Passer resultatet med hvad I kom frem til i opgave
+Mål med modstandsfunktionen på et multimeter den samlede DC modstand for et par forskellige værdier af komponenter.ne Passer resultatet med hvad I kom frem til i opgave
 \begin_inset space ~
 \end_inset
 
@@ -277,7 +276,26 @@ Opgave
 \end_layout
 
 \begin_layout Standard
-Opstil et udtryk for impedansen 𝑍 af systemet i Figur 1a.
+Opstil et udtryk for impedansen 
+\begin_inset Formula $Z$
+\end_inset
+
+ af systemet i figur
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:r_r_c_kreds"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -285,78 +303,51 @@ Hvordan måler vi både spænding og strøm?
 \end_layout
 
 \begin_layout Standard
-Impedansen 𝑍 for et system er pr definition forholdet mellem spændingsforskellen 
-\begin_inset Formula $U(t)$
+Impedansen 
+\begin_inset Formula $Z$
+\end_inset
+
+ for et system er pr definition forholdet mellem spændingsforskellen 
+\begin_inset Formula $u(t)$
 \end_inset
 
  over systemet og strømstyrken 
-\begin_inset Formula $I(t)$
+\begin_inset Formula $i(t)$
 \end_inset
 
  gennem systemet.
  For en kompleks impedans som her,
  vil 
-\begin_inset Formula $U(t)$
+\begin_inset Formula $u(t)$
 \end_inset
 
  ikke være i fase med 
-\begin_inset Formula $I(t)$
+\begin_inset Formula $i(t)$
 \end_inset
 
 .
- Dette giver et praktisk måleteknisk problem:
- Hvis man blot påtrykker en AC-spænding 
-\begin_inset Formula $U_{ind}(t)$
+ Dette giver et praktisk måleteknisk problem,
+ for at karakterisere både spænding og strøm over kredsen,
+ er vi nødt til at måle begge størrelser med en tidsopløsning som er tilstrækkeligt god til at vi kan måle både deres størrelse og fase.
+ I praksis gøres dette lettest ved at måle strømmen via en spændingsmåling over en kendt modstand,
+ 
+\begin_inset Formula $R_{shunt}$
 \end_inset
 
- på systemet og samtidig forsøger at måle spændingsforskellen 
-\begin_inset Formula $U_{ud}(t)$
+,
+ i en måling som er synkroniseret med spændingsmålingen over den 
+\begin_inset Formula $Z$
 \end_inset
 
- over systemet får man uafhængigt af frekvensen altid
-\begin_inset Formula 
-\[
-U_{ud}(t)=U_{ind}(t)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Det betyder,
- at overføringsfunktionen 
-\begin_inset Formula $H$
-\end_inset
-
- bliver konstant lig med 1:
-\begin_inset Formula 
-\[
-H(\omega)=\frac{U_{ud}}{U_{ind}}=1
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Vi får altså IKKE mulighed for at karakterisere systemet ad den vej!
- Hvad kan man finde på?
- Overvej,
- før du læser videre!
- Måske tænkte du om ikke vi kunne bruge definition af impedansen hvori strømstyrken også indgår.
- Så hvorfor ikke blot indsætte et amperemeter?
- Det kan man i princippet godt,
- i praksis er det dog typisk lettere at måle stømmen i form af en spændingsmåling over en kendt formodstand.
+,
+ som vi ønsker at karakterisere.
  Da denne modstand er rent ohmsk,
  man bestemme strømstyrken gennem systemet ved at måle spændingen 
-\begin_inset Formula $U_{shunt}$
+\begin_inset Formula $u_{shunt}$
 \end_inset
 
  over formodstanden via 
-\begin_inset Formula $I=\frac{U_{shunt}}{R_{shunt}}$
+\begin_inset Formula $i=\frac{u_{shunt}}{R_{shunt}}$
 \end_inset
 
  .
@@ -386,7 +377,7 @@ Opgave
 Vis at impedansen med formodstand indsat kan bestemmes ved:
 \begin_inset Formula 
 \[
-Z=\frac{U_{ud}}{U_{shunt}}R_{shunt}
+Z=\frac{u_{ud}}{u_{shunt}}R_{shunt}
 \]
 
 \end_inset
@@ -394,7 +385,7 @@ Z=\frac{U_{ud}}{U_{shunt}}R_{shunt}
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Opgave
 \end_layout
 
@@ -402,7 +393,7 @@ Opgave
 Vis at den numeriske værdi af impedansens imaginærdel topper ved vinkelfrekvensen
 \begin_inset Formula 
 \[
-\omega_{top}=\frac{1}{R_{parallel}C_{parallel}}
+\omega_{top}=\frac{1}{R_{\|}C_{\|}}
 \]
 
 \end_inset
@@ -452,9 +443,13 @@ Vi har nu tilført en eksten modstand og en signalkilde til kredsen.
 
 \end_inset
 
-Som nævnt i indledningen,
- er spænding og strøm ikke i fase i en kreds som indeholder en kapacitor.
- Hvis vi skal karakterisere kredsen bliver det derfor nødvendigt med en komponent som kan anvendes til at måle spænding og strøm selvstændigt.
+Som vi lige kom frem til,
+ har vi brug for en ekstra komponent,
+ 
+\begin_inset Formula $R_{shunt},$
+\end_inset
+
+ i kredsen - desuden får vi jo også brug for en signalkilde.
  Udvid derfor kredsen som vist i fig
 \begin_inset space ~
 \end_inset
@@ -474,8 +469,8 @@ nolink "false"
  
 \end_layout
 
-\begin_layout Standard
-Opgave
+\begin_layout Subsection
+Øvelse
 \begin_inset CommandInset label
 LatexCommand label
 name "Opgave_tegn_maaling"
@@ -486,17 +481,47 @@ name "Opgave_tegn_maaling"
 \end_layout
 
 \begin_layout Standard
-Tegn på diagrammet hvor og hvordan I foreslår at måle spænding og strøm og forbind til den sorte boks i 
+Tegn på diagrammet hvor og hvordan I foreslår at måle spænding og strøm og forbind til den sorte boks.
+\end_layout
+
+\begin_layout Subsection
+Dataopsamling
 \end_layout
 
 \begin_layout Standard
-Vi foreslår at teste modellen med 
-\begin_inset Formula $C_{parallel}=1\text{F}$
+I er nu klar til at afprøve opstillingen.
+ Vi starter med at lave nogle få manuelle målinger,
+ hvor I benytter Python-programmet til at måle ved nogle bestemte frekvenser - dette gøres med metoden 
+\family typewriter
+test_a_frequency()
+\family default
+,
+ som tager et enkelt argument,
+ nemlig den ønskede frekvens.
+ Brug et par minutter på at kigge programmet igennem,
+ I behøver på ingen måde forstå det i detaljer,
+ men prøv om I kan regne ud hvordan det overodnet fungerer.
+\end_layout
+
+\begin_layout Subsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Foretag cirka tre manuelle målinger,
+ en ved 'lav' frekvens,
+ en ved 'høj' frekvens og en ind imellem.
+ Får I værdier som giver mening i forhold til jeres allerede udførte DC måling og i forhold til jeres forudsigelse om værdien ved uendelig frekvens?
+\end_layout
+
+\begin_layout Standard
+Et konstruktivt forslag er starte med at teste med værdierne 
+\begin_inset Formula $C_{parallel}=\mu1\text{F}$
 \end_inset
 
 ,
  
-\begin_inset Formula $R_{parallel}=1000\Omega$
+\begin_inset Formula $R_{parallel}=500\Omega$
 \end_inset
 
 ,
@@ -508,7 +533,55 @@ Vi foreslår at teste modellen med
 \begin_inset Formula $R_{shunt}=1000\Omega$
 \end_inset
 
+.
+ I kan frit prøve med andre værdier,
+ men vær dog opmærksom på,
+ at den udleverede Python kode antager 
+\begin_inset Formula $R_{shunt}=1000\Omega$
+\end_inset
 
+ og I skal derfor rette i koden hvis I vælger en anden værdi.
+\end_layout
+
+\begin_layout Subsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Gentag en af de ovennævnte målinger,
+ men prøv denne gang at visualisere signalet ved at forbinde oscilloskopet.
+ Bemærk at oscilloskop har en indre modstand på 
+\begin_inset Formula $1\text{M}\Omega$
+\end_inset
+
+ og at yderterminalen er forbundet til jord.
+ Dette har betydelig praktisk betydning for nemt det er at anvende i denne type opgave,
+ især hvis I ønsker at se på spændingen over 
+\begin_inset Formula $Z$
+\end_inset
+
+ og over 
+\begin_inset Formula $R_{shunt}$
+\end_inset
+
+ på samme tid.
+ Prøv jer lidt frem og skitser hvordan I tænker opgaven bedst løses.
+\end_layout
+
+\begin_layout Section
+Impedansspektroskopi
+\end_layout
+
+\begin_layout Standard
+Vi er nu klar til at foretage et sweep over hele frekvensspektret - dette kaldes impedansspektroskopi og finder anvendelse i mange sammenhænge lige fra måling af fedtprocent i kroppen til karakterisering af elektrokemiske opstillinger.
+\end_layout
+
+\begin_layout Subsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Foretage et sweep ....
 \end_layout
 
 \end_body
