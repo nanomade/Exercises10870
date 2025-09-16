@@ -112,14 +112,13 @@ PC,
  dataopsamlingskort NI-6251,
  NI SC-2345,
  Keysight 33500B funktionsgenerator,
- kabeler samt eventuelt et oscilloscop.
+ kabeler samt et oscilloscop.
 \end_layout
 
 \begin_layout Standard
-Dataopsamlingen implementeres i Python - dette er dog en øvelse i impedansspektroskopy,
+Dataopsamlingen implementeres i Python - dette er dog en øvelse i impedansspektroskopi,
  ikke i Python,
- og I får derfor udleveret skelettet til programmet.
- Programmet vil være tilgængeligt på computerne,
+ og I får derfor udleveret programmet som vil være tilgængeligt på computerne,
  og kan også findes på Github:
  
 \end_layout
@@ -188,7 +187,7 @@ nolink "false"
 \end_inset
 
 .
- Det består af en ohm modstand,
+ Det består af en ohmsk modstand,
  
 \begin_inset Formula $R_{serie}$
 \end_inset
@@ -220,7 +219,7 @@ name "subsec:opgave_beregn_modstand"
 \end_layout
 
 \begin_layout Standard
-Beregn den totale elektriske modstand gennem kredsen for henholdsvis en DC strøm og for en AC strøm ved uendelig frekvens.
+Bestem den totale elektriske modstand gennem kredsen for henholdsvis en DC strøm og for en AC strøm ved uendelig frekvens.
 \end_layout
 
 \begin_layout Subsection
@@ -249,7 +248,8 @@ nolink "false"
 \end_layout
 
 \begin_layout Standard
-Mål med modstandsfunktionen på et multimeter den samlede DC modstand for et par forskellige værdier af komponenter.ne Passer resultatet med hvad I kom frem til i opgave
+Mål med modstandsfunktionen på et multimeter den samlede DC modstand for et par forskellige værdier af komponenterne.
+ Passer resultatet med hvad I kom frem til i opgave
 \begin_inset space ~
 \end_inset
 
@@ -335,18 +335,27 @@ Impedansen
 \end_inset
 
 ,
- i en måling som er synkroniseret med spændingsmålingen over den 
+ i en måling som er synkroniseret med spændingsmålingen over den impedans,
+ 
 \begin_inset Formula $Z$
 \end_inset
 
 ,
  som vi ønsker at karakterisere.
- Da denne modstand er rent ohmsk,
- man bestemme strømstyrken gennem systemet ved at måle spændingen 
+ Da 
+\begin_inset Formula $R_{shunt}$
+\end_inset
+
+ er rent ohmsk,
+ kan man bestemme strømstyrken gennem systemet ved at måle spændingen 
 \begin_inset Formula $u_{shunt}$
 \end_inset
 
- over formodstanden via 
+ over formodstanden og finde 
+\begin_inset Formula $i$
+\end_inset
+
+ via 
 \begin_inset Formula $i=\frac{u_{shunt}}{R_{shunt}}$
 \end_inset
 
@@ -358,26 +367,16 @@ Opgave
 \end_layout
 
 \begin_layout Standard
-Gør rede for at overføringsfunktionen med formodstand indsat bliver
-\begin_inset Formula 
-\[
-H(\omega)=\frac{Z}{R_{shunt}+Z}
-\]
-
+Gør rede for at overføringsfunktionen,
+ altså spændingen over 
+\begin_inset Formula $Z$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsection
-Opgave
-\end_layout
-
-\begin_layout Standard
-Vis at impedansen med formodstand indsat kan bestemmes ved:
+ i forhold til spændingen fra signalkilden,
+ med formodstand indsat bliver
 \begin_inset Formula 
 \[
-Z=\frac{u_{ud}}{u_{shunt}}R_{shunt}
+H(\omega)=\frac{U_{tot}}{U_{Z}}=\frac{Z}{R_{shunt}+Z}
 \]
 
 \end_inset
@@ -482,6 +481,20 @@ name "Opgave_tegn_maaling"
 
 \begin_layout Standard
 Tegn på diagrammet hvor og hvordan I foreslår at måle spænding og strøm og forbind til den sorte boks.
+ 
+\begin_inset Formula $U_{shunt}$
+\end_inset
+
+ forbindes til porten '9V' på den sorte boks og 
+\begin_inset Formula $U_{Z}$
+\end_inset
+
+ forbindes til porten 'H'.
+ Indstil frekvensgeneratoren til en peak-to-peak spænding på 1
+\begin_inset space \thinspace{}
+\end_inset
+
+V.
 \end_layout
 
 \begin_layout Subsection
@@ -500,7 +513,7 @@ test_a_frequency()
  nemlig den ønskede frekvens.
  Brug et par minutter på at kigge programmet igennem,
  I behøver på ingen måde forstå det i detaljer,
- men prøv om I kan regne ud hvordan det overodnet fungerer.
+ men prøv om I kan regne ud hvordan det overordnet fungerer.
 \end_layout
 
 \begin_layout Subsection
@@ -516,31 +529,31 @@ Foretag cirka tre manuelle målinger,
 
 \begin_layout Standard
 Et konstruktivt forslag er starte med at teste med værdierne 
-\begin_inset Formula $C_{parallel}=\mu1\text{F}$
+\begin_inset Formula $C_{parallel}=\mu\thinspace1\text{F}$
 \end_inset
 
 ,
  
-\begin_inset Formula $R_{parallel}=500\Omega$
+\begin_inset Formula $R_{parallel}=500\thinspace\Omega$
 \end_inset
 
 ,
  
-\begin_inset Formula $R_{serie}=1000\Omega$
+\begin_inset Formula $R_{serie}=1000\thinspace\Omega$
 \end_inset
 
  og 
-\begin_inset Formula $R_{shunt}=1000\Omega$
+\begin_inset Formula $R_{shunt}=1000\thinspace\Omega$
 \end_inset
 
 .
  I kan frit prøve med andre værdier,
- men vær dog opmærksom på,
- at den udleverede Python kode antager 
-\begin_inset Formula $R_{shunt}=1000\Omega$
+ men vær dog opmærksom på at opstillingen ikke har et overvældende imponerende dynamikområde.
+ Desuden antager den udleverede Python kode 
+\begin_inset Formula $R_{shunt}=1000\thinspace\Omega$
 \end_inset
 
- og I skal derfor rette i koden hvis I vælger en anden værdi.
+ og I skal derfor rette i koden hvis I vælger en anden værdi her.
 \end_layout
 
 \begin_layout Subsection
@@ -550,12 +563,16 @@ Et konstruktivt forslag er starte med at teste med værdierne
 \begin_layout Standard
 Gentag en af de ovennævnte målinger,
  men prøv denne gang at visualisere signalet ved at forbinde oscilloskopet.
- Bemærk at oscilloskop har en indre modstand på 
-\begin_inset Formula $1\text{M}\Omega$
+ Bemærk at jeres oscilloskop har en indre modstand på 1
+\begin_inset space \thinspace{}
+\end_inset
+
+M
+\begin_inset Formula $\Omega$
 \end_inset
 
  og at yderterminalen er forbundet til jord.
- Dette har betydelig praktisk betydning for nemt det er at anvende i denne type opgave,
+ Dette har betydelig praktisk betydning for hvor nemt det er at anvende i denne type opgave,
  især hvis I ønsker at se på spændingen over 
 \begin_inset Formula $Z$
 \end_inset
@@ -566,6 +583,7 @@ Gentag en af de ovennævnte målinger,
 
  på samme tid.
  Prøv jer lidt frem og skitser hvordan I tænker opgaven bedst løses.
+ 
 \end_layout
 
 \begin_layout Section
@@ -574,6 +592,24 @@ Impedansspektroskopi
 
 \begin_layout Standard
 Vi er nu klar til at foretage et sweep over hele frekvensspektret - dette kaldes impedansspektroskopi og finder anvendelse i mange sammenhænge lige fra måling af fedtprocent i kroppen til karakterisering af elektrokemiske opstillinger.
+ Det viser sig nemlig,
+ at man i praksis støder på en impedans af samme type som figur
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:r_r_c_kreds"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ og en opstilling som den I har bygget er en forholds nem måde at karakterisere den på.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -581,7 +617,68 @@ Vi er nu klar til at foretage et sweep over hele frekvensspektret - dette kaldes
 \end_layout
 
 \begin_layout Standard
-Foretage et sweep ....
+Foretag et sweep med 
+\family typewriter
+perform_a_sweep()
+\family default
+ funktionen.
+ Programmet vil nu foretage målinger ved en række forskellige frekvenser og gemme resultatet i en csv-fil.
+ Indholdet af denne fil kan i plotte i plot.py (eller i jeres yndlingsplotteprogram) - hvis opstillingen fungerer som tiltænkt skulle I gerne få en kurve med form som en halvcirkel.
+\end_layout
+
+\begin_layout Subsection
+Opgave
+\end_layout
+
+\begin_layout Standard
+Kig på kurven og forstå hvordan den er opstået.
+ Kan I genkende nogle af værdierne fra opgaverne ovenfor?
+\end_layout
+
+\begin_layout Subsection
+Opgave
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Opgave_maaleoptimering"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Prøv at ændre nogle af komponentværdierne (pas dog som nævnt på med 
+\begin_inset Formula $R_{shunt}$
+\end_inset
+
+) og se hvordan dynamikområdet er for målingen - med andre ord,
+ hvor meget kan I ændre på værdierne og stadig få meningsfyldte resultater.
+ Hvilke dele af målingen går galt når I kommer ud i områder hvor I ikke kan måle pålideligt?
+ Har I et bud på hvad man kunne gøre for at rette op det?
+\end_layout
+
+\begin_layout Subsection
+Ekstra opgave
+\end_layout
+
+\begin_layout Standard
+Prøv,
+ ud fra hvad I kom frem til i opgave
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Opgave_maaleoptimering"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ at rette måleopstillingen så I kan måle et kredsløb I ikke kunne før - er det muligt at få et spektrum af jeres egen krop hvis I holder elektroderne i hænderne?
 \end_layout
 
 \end_body
