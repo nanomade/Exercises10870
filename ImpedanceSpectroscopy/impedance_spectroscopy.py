@@ -145,7 +145,9 @@ def find_data_amp_and_phase(x_data, data):
     # If you want to plot the fitted data, uncomment here
     plot_fitted = True
     if plot_fitted:
-        plot_data(x_data, data, sine_fit_func(fit.x, x_data, freq), 'raw' 'fitted data')
+        plot_data(
+            x_data, data, sine_fit_func(fit.x, x_data, freq), 'raw', 'fitted data'
+        )
     # print(fit)
     amplitude = fit.x[0]
     phase = fit.x[1]
