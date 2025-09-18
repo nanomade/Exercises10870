@@ -23,11 +23,11 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="4.94"
-     inkscape:cx="324.39271"
-     inkscape:cy="309.7166"
+     inkscape:zoom="2.84"
+     inkscape:cx="331.51408"
+     inkscape:cy="427.11268"
      inkscape:window-width="1920"
-     inkscape:window-height="1131"
+     inkscape:window-height="1163"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -48,10 +48,11 @@
     <rect
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
        id="rect1-3-27"
-       width="18.341072"
+       width="15.395307"
        height="7.3517423"
-       x="38.790142"
-       y="125.17406" />
+       x="107.52142"
+       y="-54.273815"
+       transform="rotate(90)" />
     <rect
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999998;stroke-dasharray:none;stroke-opacity:1"
        id="rect1-3-27-1"
@@ -84,13 +85,13 @@
        d="m 110.39582,119.10698 0.10755,9.70823"
        id="path2-5" />
     <path
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       d="m 50.028606,94.788501 -0.0011,24.026199"
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 50.028606,94.786244 -0.0011,12.264986"
        id="path2-5-9" />
     <path
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       d="m 50.061968,120.20283 0.01898,4.54345"
-       id="path2-5-9-0" />
+       d="m 50.613364,123.20291 0.01898,5.29881"
+       id="path2-5-9-0-35" />
     <path
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
        d="m 98.730179,86.422734 0.019,8.012072"
@@ -136,7 +137,7 @@
        id="path2-0-4-5" />
     <path
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999997;stroke-dasharray:none;stroke-opacity:1"
-       d="m 67.226664,128.84993 8.57826,-0.10755"
+       d="m 50.228523,128.84993 25.65178,-0.10755"
        id="path2-0-0" />
     <path
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999993;stroke-dasharray:none;stroke-opacity:1"
@@ -147,19 +148,9 @@
        d="m 109.6528,94.793906 54.51847,-0.02055"
        id="path2-0-0-0-0-5" />
     <path
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999992;stroke-dasharray:none;stroke-opacity:1"
-       d="m 56.958159,128.84993 8.467716,-0.10755"
-       id="path2-0-0-4" />
-    <path
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999994;stroke-dasharray:none;stroke-opacity:1"
        d="m 87.700543,84.30756 5.48675,-0.10755"
        id="path2-0-0-4-8-2" />
-    <circle
-       style="font-variation-settings:'wght' 700;opacity:1;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       id="path4"
-       cx="66.26918"
-       cy="128.79616"
-       r="0.83260489" />
     <circle
        style="font-variation-settings:'wght' 700;fill:#ffffff;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
        id="path4-3"
@@ -168,15 +159,15 @@
        r="0.83260489" />
     <circle
        style="font-variation-settings:'wght' 700;fill:#ffffff;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       id="path4-3-6"
+       cx="60.77409"
+       cy="128.87636"
+       r="0.83260489" />
+    <circle
+       style="font-variation-settings:'wght' 700;fill:#ffffff;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
        id="path4-3-1"
        cx="121.95138"
        cy="94.788628"
-       r="0.83260489" />
-    <circle
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       id="path4-1"
-       cx="50.027508"
-       cy="119.6473"
        r="0.83260489" />
     <circle
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
@@ -200,14 +191,15 @@
     <text
        xml:space="preserve"
        style="font-size:4.93889px;font-family:Sans;-inkscape-font-specification:'Sans, @wght=700';font-variation-settings:'wght' 700;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       x="42.921215"
-       y="130.31808"
-       id="text4-0"><tspan
+       x="109.77792"
+       y="-49.558262"
+       id="text4-0"
+       transform="rotate(90)"><tspan
          sodipodi:role="line"
          id="tspan4-6"
          style="font-size:4.93889px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
-         x="42.921215"
-         y="130.31808">R<tspan
+         x="109.77792"
+         y="-49.558262">R<tspan
    style="font-size:2.82222px"
    id="tspan5-1">shunt</tspan></tspan></text>
     <text
@@ -237,7 +229,7 @@
        y="77.547302" />
     <g
        id="g7"
-       transform="translate(-3.8873981,7.4902511)">
+       transform="matrix(-1,0,0,1,213.71683,7.4902511)">
       <circle
          style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
          id="path4-1-7"
