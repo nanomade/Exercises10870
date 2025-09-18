@@ -5,22 +5,35 @@ import matplotlib.pyplot as plt
 
 
 def plot_results(results):
+    frequency = []
+    shift = []
     real = []
     imaginary = []
-    for val in results.values():
-        real.append(val[0] * np.cos(val[1]))
-        imaginary.append(val[0] * abs(np.sin(val[1])))
+    for freq, val in results.items():
+        frequency.append(freq)
+        phase_shift = val[1]  # % np.pi
+        print('{:.3f} '.format(phase_shift / np.pi), end='')
+        # print(phase_shift, np.pi / 2)
+        if phase_shift > np.pi / 4:
+            phase_shift = phase_shift - (np.pi / 2)
+        print('{:.3f}'.format(phase_shift / np.pi))
+        shift.append(phase_shift)
+        real.append(val[0] * np.cos(phase_shift))
+        imaginary.append(val[0] * np.sin(phase_shift))
 
     fig = plt.figure()
     fig.set_size_inches(20, 10)
 
-    axis = fig.add_subplot(1, 1, 1)
-    axis.plot(real, imaginary, "bo", label="")
+    ax1 = fig.add_subplot(2, 1, 1)
+    ax1.plot(real, imaginary, "bo", label="")
+    ax1.set_xlabel("Real")
+    ax1.set_ylabel("Imaginary")
 
-    axis.set_xlabel("Real")
-    axis.set_ylabel("Imaginary")
-    # axis.set_xlim(0, 50)
-    axis.legend()
+    ax2 = fig.add_subplot(2, 1, 2)
+    ax2.plot(frequency, shift, "bo", label="")
+    ax2.set_xlabel('Angular frequency')
+    ax2.set_ylabel('Phase shift / rad')
+
     plt.show()
 
 
@@ -36,5 +49,5 @@ def load_data():
 
 if __name__ == '__main__':
     results = load_data()
-    print(results)
+    # print(results)
     plot_results(results)
