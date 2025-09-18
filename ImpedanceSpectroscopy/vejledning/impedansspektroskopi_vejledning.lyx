@@ -116,7 +116,8 @@ PC,
 \end_layout
 
 \begin_layout Standard
-Dataopsamlingen implementeres i Python - dette er dog en øvelse i impedansspektroskopi,
+Dataopsamlingen implementeres i Python - dette er dog en øvelse i impedans\SpecialChar softhyphen
+spektroskopi,
  ikke i Python,
  og I får derfor udleveret programmet som vil være tilgængeligt på computerne,
  og kan også findes på Github:
@@ -124,6 +125,7 @@ Dataopsamlingen implementeres i Python - dette er dog en øvelse i impedansspekt
 \end_layout
 
 \begin_layout Verbatim*
+
 https://github.com/nanomade/Exercises10870/tree/main/ImpedanceSpectroscopy
 \end_layout
 
@@ -192,7 +194,8 @@ nolink "false"
 \end_inset
 
 ,
- i serie med en parallelkobling af endnu en ohmsk modstand,
+ i serie med en parallel\SpecialChar softhyphen
+kobling af endnu en ohmsk modstand,
  
 \begin_inset Formula $R_{\|}$
 \end_inset
@@ -409,7 +412,7 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -494,7 +497,7 @@ Tegn på diagrammet hvor og hvordan I foreslår at måle spænding og strøm og 
 \end_inset
 
  forbindes til porten 'H'.
- Indstil frekvensgeneratoren til en peak-to-peak spænding på 1
+ Indstil frekvensgeneratoren til en peak-to-peak spænding på 2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -627,7 +630,8 @@ perform_a_sweep()
 \family default
  funktionen.
  Programmet vil nu foretage målinger ved en række forskellige frekvenser og gemme resultatet i en csv-fil.
- Indholdet af denne fil kan i plotte i plot.py (eller i jeres yndlingsplotteprogram) - hvis opstillingen fungerer som tiltænkt skulle I gerne få en kurve med form som en halvcirkel.
+ Indholdet af denne fil kan i plotte i plot.py (eller i jeres yndlings\SpecialChar softhyphen
+plotteprogram) - hvis opstillingen fungerer som tiltænkt skulle I gerne få en kurve med form som en halvcirkel.
 \end_layout
 
 \begin_layout Subsection
