@@ -71,7 +71,6 @@ def plot_data(x, y1, y2=None, label1='y1', label2='y2'):
 
     axis.set_xlabel("Time / ms")
     axis.set_ylabel("Voltage / V")
-
     # axis.set_xlim(0, 5)
 
     axis.legend()
@@ -87,27 +86,28 @@ def find_main_frequency(data):
     peak_coefficient = np.argmax(np.abs(fft_data))
     peak_freq = freqs[peak_coefficient]
     peak_freq_calibrated = abs(peak_freq * sample_rate)
-    return peak_freq_calibrated
+    main_omega = peak_freq_calibrated * 2 * np.pi
+    return main_omega
 
 
-def sine_fit_func(phase, x, freq, amplitude):
+def sine_fit_func(p, x, freq):
     # value =  p[0] * np.sin(p[2] * 2 * math.pi * x + p[1])
     # value =  p[0] * np.sin(p[2] * 2 * math.pi * x + p[1])
     # value = amplitude * np.sin(freq * 2 * math.pi * x + phase)
-    value = amplitude * np.sin(freq * x + phase)
+    value = p[0] * np.sin(freq * x + p[1])
     return value
 
 
-def sine_error_func(p, x, y, freq, amplitude):
-    error = sine_fit_func(p, x, freq, amplitude) - y
+def sine_error_func(p, x, y, freq):
+    error = sine_fit_func(p, x, freq) - y
     return error
 
 
 def find_data_amp_and_phase(x_data, data):
     freq = find_main_frequency(data)
     # print('Detected frequency: {}Hz'.format(freq))
-    amplitude = (max(data) - min(data)) / 2
-    print("Detected amplitude: {:.1f}mV".format(amplitude * 1000))
+    amp_guess = (max(data) - min(data)) / 2
+    print('Amplitude estimate: {:.1f}mV'.format(amp_guess * 1000))
 
     if len(x_data) > 1500:
         fit_length = 1500
@@ -115,39 +115,41 @@ def find_data_amp_and_phase(x_data, data):
         fit_length = len(x_data)
 
     error_min = 99999999999
-    phase_guesses = np.arange(0, 6, 0.15)
+    phase_guesses = np.arange(0, 6, 0.05)
+
     for phase_guess in phase_guesses:
+        p0 = [amp_guess, phase_guess]
         error = 0
         for i in range(0, fit_length):
-            sine_fit = sine_fit_func(phase_guess, x_data[i], freq, amplitude)
+            sine_fit = sine_fit_func(p0, x_data[i], freq)
             error += (data[i] - sine_fit) ** 2
 
         if error < error_min:
-            # print('Guess is ', phase_guess, 'error is ', error)
             error_min = error
             phase = phase_guess
-
     # print('Phase guess: ', phase)
+    p0 = [amp_guess, phase]
 
-    # p0 = [phase_guess]
-    # If you want to plot the initial guess, uncomment here
-    # plot_data(x_data, data, sine_fit_func(phase, x_data, freq, amplitude))
+    plot_initial_guess = True
+    if plot_initial_guess:
+        plot_data(x_data, data, sine_fit_func(p0, x_data, freq), 'raw', 'initial guess')
 
     fit = sp.optimize.least_squares(
         sine_error_func,
-        phase,
-        # args=(x_data[0:2000], data[0:2000], freq, amplitude),
-        args=(x_data, data, freq, amplitude),
+        p0,
+        args=(x_data, data, freq),
         # bounds=bounds,
         **FIT_PARAMS
     )
 
     # If you want to plot the fitted data, uncomment here
-    # plot_data(x_data, data, sine_fit_func(fit.x, x_data, freq, amplitude))
+    plot_fitted = True
+    if plot_fitted:
+        plot_data(x_data, data, sine_fit_func(fit.x, x_data, freq), 'raw' 'fitted data')
     # print(fit)
-
-    phase = fit.x[0]
-    return amplitude, phase
+    amplitude = fit.x[0]
+    phase = fit.x[1]
+    return amplitude, phase, fit
 
 
 def set_frequency(freq):
@@ -167,8 +169,8 @@ def test_a_frequency(freq):
     current = data[0]
     voltage = data[1]
 
-    i_amp, i_phase = find_data_amp_and_phase(x_data, current)
-    v_amp, v_phase = find_data_amp_and_phase(x_data, voltage)
+    i_amp, i_phase, fit_i = find_data_amp_and_phase(x_data, current)
+    v_amp, v_phase, fit_v = find_data_amp_and_phase(x_data, voltage)
 
     phase_shift = i_phase - v_phase
     # NOTICE!!! 1000ohm is assumed as shunt!!!!!
@@ -178,13 +180,22 @@ def test_a_frequency(freq):
     print(msg.format(1000 * i_amp / 1000, v_amp, 1000 * v_amp / i_amp))
     msg = "PhaseI: {:.2f}.  PhaseU: {:.2f}. Phase-shift: {:.2f}"
     print(msg.format(i_phase, v_phase, phase_shift))
-    plot_data(x_data, current, voltage, 'Current', 'Voltage')
+
+    # plot_data(x_data, current, voltage, 'Current', 'Voltage')
+    plot_data(
+        x_data,
+        sine_fit_func(fit_i.x, x_data, freq),
+        sine_fit_func(fit_v.x, x_data, freq),
+        'Current',
+        'Voltage',
+    )
+
     return impedance, phase_shift
 
 
 def perform_a_sweep():
     results = {}
-    for freq in np.logspace(2, 3.5, num=30):
+    for freq in np.logspace(2, 4, num=30):
         print("Testing: {}".format(freq))
         impedance, phase_shift = test_a_frequency(freq)
         results[freq] = (impedance, phase_shift)
@@ -198,5 +209,5 @@ def perform_a_sweep():
 
 
 if __name__ == "__main__":
-    # test_a_frequency(1000)
+    # test_a_frequency(4000)
     perform_a_sweep()
