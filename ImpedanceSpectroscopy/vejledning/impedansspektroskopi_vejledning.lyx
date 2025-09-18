@@ -124,7 +124,6 @@ Dataopsamlingen implementeres i Python - dette er dog en øvelse i impedansspekt
 \end_layout
 
 \begin_layout Verbatim*
-
 https://github.com/nanomade/Exercises10870/tree/main/ImpedanceSpectroscopy
 \end_layout
 
@@ -410,7 +409,7 @@ placement document
 alignment document
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -433,6 +432,11 @@ name "fig:kreds_med_shunt"
 \end_inset
 
 Vi har nu tilført en eksten modstand og en signalkilde til kredsen.
+ Bemærk at signalkildens nul er internt forbundet gennem 
+\begin_inset Formula $1\,\text{M}\Omega$
+\end_inset
+
+ til jord .
 \end_layout
 
 \end_inset

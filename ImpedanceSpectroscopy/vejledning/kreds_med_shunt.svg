@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="4.62"
-     inkscape:cx="294.48052"
-     inkscape:cy="356.92641"
+     inkscape:zoom="4.94"
+     inkscape:cx="324.39271"
+     inkscape:cy="309.7166"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -53,12 +53,12 @@
        x="38.790142"
        y="125.17406" />
     <rect
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:none;stroke-opacity:1"
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999998;stroke-dasharray:none;stroke-opacity:1"
        id="rect1-3-27-1"
-       width="18.341072"
-       height="7.3517423"
-       x="70.353951"
-       y="83.337372" />
+       width="12.172872"
+       height="4.5922842"
+       x="93.565865"
+       y="81.714157" />
     <path
        style="font-variation-settings:'wght' 700;opacity:1;fill:none;stroke:#000000;stroke-width:0.999997;stroke-dasharray:none;stroke-opacity:1"
        d="m 94.6301,128.84993 16.36995,-0.10755"
@@ -93,11 +93,11 @@
        id="path2-5-9-0" />
     <path
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       d="m 100.31768,86.422734 0.019,8.012072"
+       d="m 98.730179,86.422734 0.019,8.012072"
        id="path2-5-9-0-3" />
     <path
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       d="m 61.932035,82.373585 0.01898,9.279316"
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999996;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 87.345023,80.20339 0.01898,8.525979"
        id="path2-5-9-0-3-2" />
     <path
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999995;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
@@ -151,18 +151,26 @@
        d="m 56.958159,128.84993 8.467716,-0.10755"
        id="path2-0-0-4" />
     <path
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999992;stroke-dasharray:none;stroke-opacity:1"
-       d="m 88.873835,87.067018 11.075621,-0.10755"
-       id="path2-0-0-4-8" />
-    <path
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999992;stroke-dasharray:none;stroke-opacity:1"
-       d="m 61.525265,87.067018 8.467716,-0.10755"
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999994;stroke-dasharray:none;stroke-opacity:1"
+       d="m 87.700543,84.30756 5.48675,-0.10755"
        id="path2-0-0-4-8-2" />
     <circle
        style="font-variation-settings:'wght' 700;opacity:1;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
        id="path4"
        cx="66.26918"
        cy="128.79616"
+       r="0.83260489" />
+    <circle
+       style="font-variation-settings:'wght' 700;fill:#ffffff;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       id="path4-3"
+       cx="69.983055"
+       cy="94.793213"
+       r="0.83260489" />
+    <circle
+       style="font-variation-settings:'wght' 700;fill:#ffffff;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       id="path4-3-1"
+       cx="121.95138"
+       cy="94.788628"
        r="0.83260489" />
     <circle
        style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
@@ -204,15 +212,15 @@
    id="tspan5-1">shunt</tspan></tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:4.93889px;font-family:Sans;-inkscape-font-specification:'Sans, @wght=700';font-variation-settings:'wght' 700;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       x="73.736252"
-       y="88.239777"
+       style="font-size:3.52778px;font-family:Sans;-inkscape-font-specification:'Sans, @wght=700';font-variation-settings:'wght' 700;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       x="95.324951"
+       y="85.155678"
        id="text4-0-3"><tspan
          sodipodi:role="line"
          id="tspan4-6-6"
-         style="font-size:4.93889px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
-         x="73.736252"
-         y="88.239777">1MΩ</tspan></text>
+         style="font-size:3.52778px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="95.324951"
+         y="85.155678">1MΩ</tspan></text>
     <rect
        style="font-variation-settings:'wght' 700;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.999994;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:4, 8;stroke-dashoffset:0;stroke-opacity:1"
        id="rect7"
@@ -220,6 +228,13 @@
        height="45.449898"
        x="70.801262"
        y="105.66426" />
+    <rect
+       style="font-variation-settings:'wght' 700;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.999988;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:0.999988, 0.999988;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect7-3"
+       width="33.048096"
+       height="23.374231"
+       x="80.660271"
+       y="77.547302" />
     <g
        id="g7"
        transform="translate(-3.8873981,7.4902511)">
@@ -305,12 +320,23 @@
       </g>
     </g>
     <path
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       d="m 59.844122,83.237615 0.01898,7.551256"
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 85.40279,80.907199 0.01898,6.850565"
        id="path2-5-9-0-3-2-3" />
     <path
-       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999998;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
-       d="m 57.713694,84.303252 0.01898,5.419982"
+       style="font-variation-settings:'wght' 700;fill:none;stroke:#000000;stroke-width:0.999999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       d="m 83.37948,82.402993 0.01898,4.662368"
        id="path2-5-9-0-3-2-31" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.88056px;font-family:Sans;-inkscape-font-specification:'Sans, @wght=700';font-variation-settings:'wght' 700;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-linecap:butt;stroke-linejoin:bevel;stroke-dasharray:none;stroke-opacity:1"
+       x="79.764786"
+       y="75.107246"
+       id="text4-0-3-6"><tspan
+         sodipodi:role="line"
+         id="tspan4-6-6-1"
+         style="font-size:3.88056px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.5"
+         x="79.764786"
+         y="75.107246">Keysight 33500B</tspan></text>
   </g>
 </svg>
