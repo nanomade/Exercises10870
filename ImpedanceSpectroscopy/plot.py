@@ -14,6 +14,8 @@ def plot_results(results):
         phase_shift = val[1]  # % np.pi
         print('{:.3f} '.format(phase_shift / np.pi), end='')
         # print(phase_shift, np.pi / 2)
+        if phase_shift < 0:
+            phase_shift += 2* np.pi
         if phase_shift > np.pi / 4:
             phase_shift = phase_shift - (np.pi / 2)
         print('{:.3f}'.format(phase_shift / np.pi))
