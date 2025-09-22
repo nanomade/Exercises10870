@@ -125,7 +125,6 @@ spektroskopi,
 \end_layout
 
 \begin_layout Verbatim*
-
 https://github.com/nanomade/Exercises10870/tree/main/ImpedanceSpectroscopy
 \end_layout
 
@@ -378,7 +377,7 @@ Gør rede for at overføringsfunktionen,
  med formodstand indsat bliver
 \begin_inset Formula 
 \[
-H(\omega)=\frac{U_{tot}}{U_{Z}}=\frac{Z}{R_{shunt}+Z}
+H(\omega)=\frac{U_{Z}}{U_{tot}}=\frac{Z}{R_{shunt}+Z}
 \]
 
 \end_inset
