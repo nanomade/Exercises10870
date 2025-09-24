@@ -113,7 +113,8 @@ R=\frac{U}{I}\label{eq:omhs_lov}
 \end_layout
 
 \begin_layout Standard
-hvis vi på et given tidspunkt måler 2.45
+,
+ hvis vi på et givent tidspunkt måler 2.45
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -405,7 +406,11 @@ nolink "false"
 
 \end_inset
 
- DUT er en ofte benyttet forkortelse for 'Device Under Test' og dækker i dette tilfælde over en ohmsk modstand og en eller flere dioder som skal testes.
+.
+\end_layout
+
+\begin_layout Standard
+DUT er en ofte benyttet forkortelse for 'Device Under Test' og dækker i dette tilfælde over en ohmsk modstand og en eller flere dioder som skal testes.
 \end_layout
 
 \begin_layout Standard
@@ -456,7 +461,7 @@ Den mest oplagte metode til måling af
  Dette er forholdsvist enkelt og nok stadig den mest brugte metode.
  Metoden har den store fordel,
  at man automatisk får IV-kurven med i købet,
- hvilket ofte er en fordel.
+ hvilket ofte er værdifuldt.
  Ulempen er,
  at nummerisk differentiation uundgåetligt introducerer en hel del støj og det er derfor til tider vanskeligt at få rigtig gode målinger.
  Det er desuden vigtigt at have tilstrækkeligt mange målepunkter,
