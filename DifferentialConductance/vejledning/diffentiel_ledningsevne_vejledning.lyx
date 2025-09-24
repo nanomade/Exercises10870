@@ -1,0 +1,678 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children no
+\language danish
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip halfline
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Måling af differentiel ledningsevne
+\end_layout
+
+\begin_layout Section
+Elektrisk modstand
+\end_layout
+
+\begin_layout Standard
+Det er ikke altid man tænker over det,
+ men begrebet elektrisk modstand har i virkeligheden to betydninger.
+ Den ene betydning er,
+ at modstanden er den spænding der påkræves for at få en given strøm til at flyde gennem et system,
+ kendt som Ohms lov:
+\begin_inset Formula 
+\begin{equation}
+R=\frac{U}{I}\label{eq:omhs_lov}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+hvis vi på et given tidspunkt måler 2.45
+\begin_inset space \thinspace{}
+\end_inset
+
+V og 1.24
+\begin_inset space \thinspace{}
+\end_inset
+
+mA,
+ er modstanden i denne situation 1.98
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Formula $\text{k}\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En anden betydning af ordet modstand er den ekstra spænding det påkræves at øge strømstyrken med en given mængde:
+\begin_inset Formula 
+\begin{equation}
+R_{diff}=\frac{dU}{dI}\label{eq:diff_modstand}
+\end{equation}
+
+\end_inset
+
+Traditionelt taler man dog typisk om differentiel ledningsevne frem for differentiel fremfor differentiel modstand og opskriverfor normalt udtrykket som:
+ 
+\begin_inset Formula 
+\begin{equation}
+\Delta G=\frac{dI}{dU}\label{eq:diff_ledningsevne}
+\end{equation}
+
+\end_inset
+
+hvor 
+\begin_inset Formula $G$
+\end_inset
+
+ er betegnelsen for ledningsevne,
+ altså 
+\begin_inset Formula $1/R$
+\end_inset
+
+.
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename DifferentialChordalResistance.svg
+	display false
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:de_to_typer_modstande"
+
+\end_inset
+
+Illustration af de to betydninger af begrebet modstand.
+ I Punktet 
+\begin_inset Formula $A$
+\end_inset
+
+ vil ligning
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:omhs_lov"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ give modstanden 
+\begin_inset Formula $R=\frac{V_{A}}{I_{A}}$
+\end_inset
+
+ og hældningen af linjen B vil være lig med ledningsevnen,
+ 
+\begin_inset Formula $G=\frac{I_{A}}{V_{A}}.$
+\end_inset
+
+ Ligning
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:diff_modstand"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ vil give modstanden 
+\begin_inset Formula $R_{diff}=\text{\ensuremath{\frac{dV_{A}}{dI_{A}}}}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ og hældningen af linjen C vil tilsvarende være 
+\begin_inset Formula $\Delta G=\frac{dI_{A}}{dV_{A}}$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wiki-figur"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+I tilfældet af en klassisk ohmsk modstand,
+ er de to værdier identiske og man er derfor ikke altid opmærksom på de to betydninger,
+ men for mange andre komponenter er dette ikke tilfældet.
+ I har allerede mødt et simpelt eksempel,
+ nemlig en diode som vi også vil benytte som model i dagens øvelse.
+\end_layout
+
+\begin_layout Subsection
+Opgave
+\end_layout
+
+\begin_layout Standard
+Lav en grov skitse af hvordan I forventer at 
+\begin_inset Formula $I/V$
+\end_inset
+
+-kurven og 
+\begin_inset Formula $dI/dV$
+\end_inset
+
+-kurven ser ud for henholdsvis en ohmsk modstand og en idéel diode.
+\end_layout
+
+\begin_layout Subsection
+Udstyr
+\end_layout
+
+\begin_layout Standard
+PC,
+ Keysight 33500B funktionsgenerator,
+ Agilent 34401A digitalt multimeter,
+ et oscilloscop (til illustration og fejlfinding),
+ en ohmsk modstand til shunt for strømmåling,
+ en ohmsk modstand til test,
+ LED'er til test,
+ samt fumlebræt og diverse ledninger.
+ 
+\end_layout
+
+\begin_layout Standard
+Målingerne implementeres i Python - dette er dog en øvelse måling af differentiel ledningsevene,
+ ikke i Python,
+ og I får derfor udleveret programmet som vil være tilgængeligt på computerne,
+ og kan også findes på Github:
+ 
+\end_layout
+
+\begin_layout Verbatim*
+
+https://github.com/nanomade/Exercises10870/tree/main/DifferentialConductance
+\end_layout
+
+\begin_layout Verbatim*
+
+\end_layout
+
+\begin_layout Section
+Målemetoder
+\end_layout
+
+\begin_layout Standard
+Den differentielle ledningsevne har ofte både praktisk og videnskabelig interesse og spørgsmålet om hvordan man bedst måler den er derfor yderst relveant.
+ Et antal forskellige metoder eksisterer,
+ og vi vil i denne øvelse afprøve tre af de mest brugte.
+\end_layout
+
+\begin_layout Standard
+Normalt vil man anvende forholdsvist specialiseret måleudstyr til de forskellige metoder,
+ det har vi ikke til rådighed i dag,
+ og vi kommer derfor til at indgå et par kompromiser for at komme i mål;
+ vi anvender det samme udstyr til alle tre metoder og det benytte kredsløb er derfor det samme til forskellige øvelser,
+ forskellen ligger i hvordan målinger foretages.
+ Desuden må vi nøjes med at måle en enkelt spænding,
+ nemlig den over 
+\begin_inset Formula $R_{shunt}$
+\end_inset
+
+ som giver strømmen i kredsen.
+ Vi har naturligvis også brug for at kende spændingen over den målte komponent,
+ men her må vi i dag nøjes med at anvende differencen mellem 
+\begin_inset Formula $U_{shunt}$
+\end_inset
+
+ og det valgte setpunkt for spændingskilden 
+\begin_inset Formula $U_{tot}$
+\end_inset
+
+.
+ Vi finder derfor i software 
+\begin_inset Formula $U_{DUT}=U_{tot}-U_{shunt}$
+\end_inset
+
+,
+ i en professionel opstilling vil man ikke foretage denne beregning,
+ men måle 
+\begin_inset Formula $U_{DUT}$
+\end_inset
+
+ direkte.
+\end_layout
+
+\begin_layout Subsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename measurement_circuit.svg
+	display false
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:measurement_circuit"
+
+\end_inset
+
+Målekredsen som skal bruges til alle målinger.
+ Selvom der kun er ret få ledninger,
+ er det alligevel formentlig lettest at lægge opstillingen ud på et fumlebræt.
+ Bemærk trigger-kablet som skal forbindes til bagsiden af multimeteret.
+ Der undskyldes for misbruget af kanal 2 til tigger-signalet,
+ som i en idéel verden bør gå via 'Sync' terminalen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Byg kredsløbet i figur
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:measurement_circuit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ DUT er en ofte benyttet forkortelse for 'Device Under Test' og dækker i dette tilfælde over en ohmsk modstand og en eller flere dioder som skal testes.
+\end_layout
+
+\begin_layout Subsection
+Differentiation af IV-kurven
+\end_layout
+
+\begin_layout Standard
+Den mest oplagte metode til måling af 
+\begin_inset Formula $dI/dV$
+\end_inset
+
+- er ikke helt overraskende at måle IV-kurven og derefter differentiere den nummerisk.
+ Dette er forholdsvist enkelt og nok stadig den mest brugte metode.
+ Metoden har den store fordel,
+ at man automatisk får IV-kurven med i købet,
+ hvilket ofte er en fordel.
+ Ulempen er,
+ at nummerisk differentiation uundgåetligt introducerer en hel del støj og det er derfor til tider vanskeligt at få rigtig gode målinger.
+\end_layout
+
+\begin_layout Subsubsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+I det udlverede program,
+ anvend funktionen 
+\family typewriter
+iv_curve(v_from,
+ v_to,
+ stepsize)
+\family default
+ til at måle IV-kurven for henholdsvis en ohmsk modstand og en eller flere LED'er.
+ Programmet producerer en IV-kurve som I skal differentiere nummerisk.
+ 
+\end_layout
+
+\begin_layout Subsection
+Måling af AC-respons med DC-offset
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename dc_plus_ac_signal.svg
+	display false
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dc_plus_ac"
+
+\end_inset
+
+Illustation af test-signalet i DC+AC metoden.
+ Spændingen stiger som i DC-metoden liniært,
+ men i dette tilfælde overlejres en lille AC spænding.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+En anden metode er at overlejre den liniære kurve med et lille AC-signal.
+ Hvis vi har en målemetode som er ufølsom for DC vil responset på AC signalet give en direkte måling af den differentille ledningsevne fordsat at signalet er småt nok til at IV-kurven er approximativt liniær i det relevante område.
+ Traditionelt anvendes en såkaldt Lock-In forstærker til at måle AC-signalet,
+ men vi har ikke disse til rådighed i klasseset,
+ og vi må derfor nøjes med AC-funktionen på multimeteret.
+\end_layout
+
+\begin_layout Subsubsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+I det udleverede program,
+ anvend funktionen 
+\family typewriter
+dc_plus_ac_measurement(v_from,
+ v_to,
+ ac_amp)
+\family default
+ til måle 
+\begin_inset Formula $dI/dV$
+\end_inset
+
+-kurven for henholdsvis en ohmsk modstand og en eller flere LED'er.
+ Eksperimentér med størrelsen af AC-amplituden og find fordele og ulemper med ved store og små værdier.
+\end_layout
+
+\begin_layout Subsection
+DC+Delta-metoden
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename dc_plus_delta_signal.svg
+	display false
+	width 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dc_plus_delta"
+
+\end_inset
+
+Illustation af test-signalet i DC+Delta metoden.
+ Spændingen stiger som i DC-metoden liniært,
+ men i dette tilfælde overlejres en pulserende DC spænding.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Den sidste (og historisk nyeste) metode,
+ er et snedigt trick som blev foreslået af instrumentproducenten Keithley for nogle år siden.
+ Her erstattes AC signalet med et pulserende DC-signal,
+ som på skift ligger under og under den underliggende rampe.
+ Metoden er beskrevet i detaljer i 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DeltaMode"
+literal "false"
+
+\end_inset
+
+,
+ og lyder mere kompliceret end den er.
+ Den store fordel ved metoder,
+ at DC målinger typisk er bedre (for en given pris af ens måleinstrument) end AC målinger,
+ men at man stadig får den 'direkte' måling af den differentielle ledningsevne uden behov for nummerisk differentiering.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+I det udleverede program,
+ anvend funktionen 
+\family typewriter
+delta_mode_measurement(v_from,
+ v_to,
+ step_size,
+ delta_value)
+\family default
+ til måle 
+\begin_inset Formula $dI/dV$
+\end_inset
+
+-kurven for henholdsvis en ohmsk modstand og en eller flere LED'er.
+ Eksperimentér med størrelsen af AC-amplituden og find fordele og ulemper med ved store og små værdier.
+\end_layout
+
+\begin_layout Section
+Sammenligning
+\end_layout
+
+\begin_layout Standard
+I har nu prøvet en række forskellige metoder til udmåling af den samme differentielle ledningsevne.
+ Se på jeres målinger fra de forskellige metoder og sammenlign fordele og ulemper.
+ Var det samme metode som gav de bedste resultater for den ohmske modstand og for dioderne?
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1"
+key "wiki-figur"
+literal "false"
+
+\end_inset
+
+https://en.wikipedia.org/wiki/Electrical_resistance_and_conductanceds
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2"
+key "DeltaMode"
+literal "false"
+
+\end_inset
+
+An Improved Method forDifferential Conductance Measurements,
+ Adam Daire,
+ Keithley Whitepaper
+\begin_inset Newline newline
+\end_inset
+
+https://download.tek.com/document/2610%20Diff%20Conductance_WP.pdf
+\end_layout
+
+\end_body
+\end_document
