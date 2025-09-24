@@ -142,7 +142,7 @@ R_{diff}=\frac{dU}{dI}\label{eq:diff_modstand}
 
 \end_inset
 
-Traditionelt taler man dog typisk om differentiel ledningsevne frem for differentiel fremfor differentiel modstand og opskriverfor normalt udtrykket som:
+Traditionelt taler man dog typisk om differentiel ledningsevne frem for differentiel modstand og opskriverfor normalt udtrykket som:
  
 \begin_inset Formula 
 \begin{equation}
@@ -166,7 +166,7 @@ placement document
 alignment document
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -343,11 +343,76 @@ Den differentielle ledningsevne har ofte både praktisk og videnskabelig interes
  og vi vil i denne øvelse afprøve tre af de mest brugte.
 \end_layout
 
+\begin_layout Subsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename measurement_circuit.svg
+	display false
+	width 6cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:measurement_circuit"
+
+\end_inset
+
+Målekredsen som skal bruges til alle målinger.
+ Selvom der kun er ret få ledninger,
+ er det alligevel formentlig lettest at lægge opstillingen ud på et fumlebræt.
+ Bemærk trigger-kablet som skal forbindes til bagsiden af multimeteret.
+ Der undskyldes for misbruget af kanal 2 til trigger-signalet,
+ som i en idéel verden bør gå via 'Sync' terminalen.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Byg kredsløbet i figur
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:measurement_circuit"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ DUT er en ofte benyttet forkortelse for 'Device Under Test' og dækker i dette tilfælde over en ohmsk modstand og en eller flere dioder som skal testes.
+\end_layout
+
 \begin_layout Standard
 Normalt vil man anvende forholdsvist specialiseret måleudstyr til de forskellige metoder,
  det har vi ikke til rådighed i dag,
  og vi kommer derfor til at indgå et par kompromiser for at komme i mål;
- vi anvender det samme udstyr til alle tre metoder og det benytte kredsløb er derfor det samme til forskellige øvelser,
+ vi anvender det samme udstyr til alle tre metoder og det benyttede kredsløb er derfor det samme tilmde forskellige øvelser,
  forskellen ligger i hvordan målinger foretages.
  Desuden må vi nøjes med at måle en enkelt spænding,
  nemlig den over 
@@ -379,71 +444,6 @@ Normalt vil man anvende forholdsvist specialiseret måleudstyr til de forskellig
 \end_layout
 
 \begin_layout Subsection
-Øvelse
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement document
-alignment document
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename measurement_circuit.svg
-	display false
-	width 6cm
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:measurement_circuit"
-
-\end_inset
-
-Målekredsen som skal bruges til alle målinger.
- Selvom der kun er ret få ledninger,
- er det alligevel formentlig lettest at lægge opstillingen ud på et fumlebræt.
- Bemærk trigger-kablet som skal forbindes til bagsiden af multimeteret.
- Der undskyldes for misbruget af kanal 2 til tigger-signalet,
- som i en idéel verden bør gå via 'Sync' terminalen.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Byg kredsløbet i figur
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:measurement_circuit"
-plural "false"
-caps "false"
-noprefix "false"
-nolink "false"
-
-\end_inset
-
- DUT er en ofte benyttet forkortelse for 'Device Under Test' og dækker i dette tilfælde over en ohmsk modstand og en eller flere dioder som skal testes.
-\end_layout
-
-\begin_layout Subsection
 Differentiation af IV-kurven
 \end_layout
 
@@ -459,6 +459,8 @@ Den mest oplagte metode til måling af
  hvilket ofte er en fordel.
  Ulempen er,
  at nummerisk differentiation uundgåetligt introducerer en hel del støj og det er derfor til tider vanskeligt at få rigtig gode målinger.
+ Det er desuden vigtigt at have tilstrækkeligt mange målepunkter,
+ da differencen mellem målepunkter ellers blive en dårlig approximation til ægte differentiation.
 \end_layout
 
 \begin_layout Subsubsection
@@ -466,7 +468,7 @@ Den mest oplagte metode til måling af
 \end_layout
 
 \begin_layout Standard
-I det udlverede program,
+I det udleverede program,
  anvend funktionen 
 \family typewriter
 iv_curve(v_from,
@@ -511,7 +513,7 @@ name "fig:dc_plus_ac"
 \end_inset
 
 Illustation af test-signalet i DC+AC metoden.
- Spændingen stiger som i DC-metoden liniært,
+ Spændingen stiger som i DC-metoden lineært,
  men i dette tilfælde overlejres en lille AC spænding.
 \end_layout
 
@@ -522,8 +524,8 @@ Illustation af test-signalet i DC+AC metoden.
 
 \end_inset
 
-En anden metode er at overlejre den liniære kurve med et lille AC-signal.
- Hvis vi har en målemetode som er ufølsom for DC vil responset på AC signalet give en direkte måling af den differentille ledningsevne fordsat at signalet er småt nok til at IV-kurven er approximativt liniær i det relevante område.
+En anden metode er at overlejre den lineære kurve med et lille AC-signal.
+ Hvis vi har en målemetode som er ufølsom for DC vil responset på AC signalet give en direkte måling af den differentille ledningsevne fordsat at signalet er småt nok til at IV-kurven er approximativt lineær i det relevante område.
  Traditionelt anvendes en såkaldt Lock-In forstærker til at måle AC-signalet,
  men vi har ikke disse til rådighed i klasseset,
  og vi må derfor nøjes med AC-funktionen på multimeteret.
@@ -541,7 +543,7 @@ dc_plus_ac_measurement(v_from,
  v_to,
  ac_amp)
 \family default
- til måle 
+ til at måle 
 \begin_inset Formula $dI/dV$
 \end_inset
 
@@ -582,7 +584,7 @@ name "fig:dc_plus_delta"
 \end_inset
 
 Illustation af test-signalet i DC+Delta metoden.
- Spændingen stiger som i DC-metoden liniært,
+ Spændingen stiger som i DC-metoden lineært,
  men i dette tilfælde overlejres en pulserende DC spænding.
 \end_layout
 
@@ -642,6 +644,28 @@ Sammenligning
 I har nu prøvet en række forskellige metoder til udmåling af den samme differentielle ledningsevne.
  Se på jeres målinger fra de forskellige metoder og sammenlign fordele og ulemper.
  Var det samme metode som gav de bedste resultater for den ohmske modstand og for dioderne?
+\end_layout
+
+\begin_layout Subsection
+Øvelse
+\end_layout
+
+\begin_layout Standard
+Nu hvor I har opnået erfaring med måleteknikkerne,
+ skal forsøge at dykke lidt mere ned i detaljerne i målingerne.
+ Vælg derfor enten en teknik eller en komponent:
+\end_layout
+
+\begin_layout Itemize
+Vælger I en teknik skal I forsøge at optimere denne teknik så godt som muligt på så mange af de udleverede komponenter som muligt.
+\end_layout
+
+\begin_layout Itemize
+Vælger I en komponent,
+ skal I forsøge at anvende alle tre teknikker og for hver af dem opnå en så god måling som muligt.
+ I er her hjulpet af,
+ at I grundet de forholdsvis simple komponenter,
+ har en ret god forventning til hvordan målinger 'bør' se - så heldigt er man ikke altid.
 \end_layout
 
 \begin_layout Bibliography
