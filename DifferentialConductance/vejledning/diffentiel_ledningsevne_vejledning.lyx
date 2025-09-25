@@ -326,7 +326,6 @@ Målingerne implementeres i Python - dette er dog en øvelse måling af differen
 \end_layout
 
 \begin_layout Verbatim*
-
 https://github.com/nanomade/Exercises10870/tree/main/DifferentialConductance
 \end_layout
 
@@ -417,8 +416,8 @@ DUT er en ofte benyttet forkortelse for 'Device Under Test' og dækker i dette t
 Normalt vil man anvende forholdsvist specialiseret måleudstyr til de forskellige metoder,
  det har vi ikke til rådighed i dag,
  og vi kommer derfor til at indgå et par kompromiser for at komme i mål;
- vi anvender det samme udstyr til alle tre metoder og det benyttede kredsløb er derfor det samme tilmde forskellige øvelser,
- forskellen ligger i hvordan målinger foretages.
+ vi anvender det samme udstyr til alle tre metoder og det benyttede kredsløb er derfor det samme til de forskellige øvelser,
+ forskellen ligger i hvordan målingerne foretages.
  Desuden må vi nøjes med at måle en enkelt spænding,
  nemlig den over 
 \begin_inset Formula $R_{shunt}$
