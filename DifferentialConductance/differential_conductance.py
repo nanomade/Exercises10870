@@ -219,6 +219,7 @@ class DCMeasurement:
             print('Error v_from must by lower than v_to!')
             return
 
+        # TODO: It would seem dI_dV should be multiplied by 4
         v_shunt = 0
         while voltage < v_to:
             # Add previous v_shunt in an attempt to achive
@@ -246,7 +247,6 @@ class DCMeasurement:
             msg = 'Vdut: {:.3f}V, I: {:.3f}mA, di/dv: {:.3f}mA'
             print(msg.format(v_dut, current * 1e3, di_dv * 1e3))
             voltage = voltage + v_step + v_shunt
-
             self.writer.write_line(
                 time=time.time() - self.t_start,
                 v_total=voltage,
@@ -261,21 +261,35 @@ class DCMeasurement:
         self._init_channel(1, dc=True)
         time.sleep(0.5)
         voltage = v_from
-
+        v_shunt = 0
         while voltage < v_to:
-            v_plus = voltage + v_delta
-            v_minus = voltage - v_delta
+            # Voltage is the wanted voltage on the DUT, add approximate v_shunt
+            # to the total voltage
+            v_actual = voltage + v_shunt
+            self.set_dc_voltage(v_actual)
+
+            v_plus = v_actual + v_delta
+            v_minus = v_actual - v_delta
             i1, v_dut1, v_shunt1 = self.read_at_voltage(v_plus)
             i2, v_dut2, v_shunt2 = self.read_at_voltage(v_minus)
             i3, v_dut3, v_shunt3 = self.read_at_voltage(v_plus)
 
             v_shunt = (v_shunt3 + v_shunt2) * 0.5
             current = (i3 + i2) * 0.5
-            voltage = voltage + v_step + v_shunt
+            voltage = voltage + v_step
             di = 0.5 * (0.5 * (i1 - i2) + 0.5 * (i3 - i2)) / v_delta
 
             msg = 'I: {:.3f}mA, di: {:.3f}uA'
             print(msg.format(current * 1e3, di * 1e6))
+            self.writer.write_line(
+                time=time.time() - self.t_start,
+                v_total=voltage,
+                v_shunt=v_shunt,
+                current=current,
+                v_dut=v_dut,
+                di_dv=di_dv,
+            )
+
         self.set_dc_voltage(0)
 
 
