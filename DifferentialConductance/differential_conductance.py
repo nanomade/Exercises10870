@@ -56,9 +56,17 @@ class Agilent34401a:
     def set_voltage_mode(self, dc=True):
         if dc:
             cmd = 'CONF:VOLT:DC 0, 1e-6'
+            self.instr.write(cmd)
+            cmd = 'VOLTAGE:DC:RANGE:AUTO ON'
+            self.instr.write(cmd)
         else:  # AC
             cmd = 'CONF:VOLT:AC 0, 1e-6'
-        self.instr.write(cmd)
+            self.instr.write(cmd)
+            cmd = 'VOLTAGE:AC:RANGE:AUTO ON'
+            self.instr.write(cmd)
+        # self.instr.write(cmd)
+
+        'VOLTage:DC:RANGe:AUTO ON'
 
     def prepare_read(self):
         self.instr.write('READ?')
@@ -84,6 +92,7 @@ class DCMeasurement:
             current='Current',
             v_dut='V_dut',
             di_dv='dI_dV',
+            di='dI',
         )
 
         self.t_start = time.time()
@@ -168,7 +177,8 @@ class DCMeasurement:
         self.trig_external()
         v_shunt = self.dmm.read_after_trigger()
         current = v_shunt / self.r_shunt
-        v_dut = voltage - v_shunt
+        v_output = 50 * current  # Signal source has 50ohm output
+        v_dut = voltage - v_shunt - v_output
         return current, v_dut, v_shunt
 
     def iv_curve(self, v_from, v_to, v_step):
@@ -187,7 +197,7 @@ class DCMeasurement:
             return
 
         v_shunt = 0
-        while voltage < v_to:
+        while v_dut < v_to:
             # Add previous v_shunt in an attempt to achive
             # constant v_dut step size
             v_actual = voltage + v_shunt
@@ -204,6 +214,7 @@ class DCMeasurement:
                 current=current,
                 v_dut=v_dut,
                 di_dv=0,
+                di=0,
             )
         self.set_dc_voltage(0)
 
@@ -219,34 +230,34 @@ class DCMeasurement:
             print('Error v_from must by lower than v_to!')
             return
 
-        # TODO: It would seem dI_dV should be multiplied by 4
         v_shunt = 0
-        while voltage < v_to:
+        while v_dut < v_to:
             # Add previous v_shunt in an attempt to achive
             # constant v_dut step size
             v_actual = voltage + v_shunt
             self.set_dc_voltage(v_actual)
             time.sleep(0.1)
-
             self.dmm.set_voltage_mode(dc=True)
-            time.sleep(0.5)
+            time.sleep(0.75)
             self.dmm.prepare_read()
             self.trig_external()
             v_shunt = self.dmm.read_after_trigger()
             current = v_shunt / self.r_shunt
-            v_dut = voltage - v_shunt
+            v_output = 50 * current  # Signal source has 50ohm output
+            v_dut = v_actual - v_shunt - v_output
 
             self.dmm.set_voltage_mode(dc=False)
-            time.sleep(0.75)
+            time.sleep(2.0)
             self.dmm.prepare_read()
             self.trig_external()
-            d_shunt = self.dmm.read_after_trigger()
-            di = d_shunt / self.r_shunt
-            di_dv = di / amplitude
+            dV_shunt = self.dmm.read_after_trigger() * 2 ** (1.5)
+            di = dV_shunt / self.r_shunt
+            dv = amplitude - di * (self.r_shunt + 50)
+            di_dv = di / dv
 
-            msg = 'Vdut: {:.3f}V, I: {:.3f}mA, di/dv: {:.3f}mA'
-            print(msg.format(v_dut, current * 1e3, di_dv * 1e3))
-            voltage = voltage + v_step + v_shunt
+            msg = 'dI: {:.3f}uA, Vdut: {:.3f}V, I: {:.3f}mA, di/dv: {:.3f}mA/V'
+            print(msg.format(di * 1e6, v_dut, current * 1e3, di_dv * 1e3))
+            voltage = voltage + v_output + v_step
             self.writer.write_line(
                 time=time.time() - self.t_start,
                 v_total=voltage,
@@ -254,6 +265,7 @@ class DCMeasurement:
                 current=current,
                 v_dut=v_dut,
                 di_dv=di_dv,
+                di=di,
             )
         self.set_dc_voltage(0)
 
@@ -262,7 +274,8 @@ class DCMeasurement:
         time.sleep(0.5)
         voltage = v_from
         v_shunt = 0
-        while voltage < v_to:
+        v_dut = 0
+        while v_dut < v_to:
             # Voltage is the wanted voltage on the DUT, add approximate v_shunt
             # to the total voltage
             v_actual = voltage + v_shunt
@@ -277,10 +290,14 @@ class DCMeasurement:
             v_shunt = (v_shunt3 + v_shunt2) * 0.5
             current = (i3 + i2) * 0.5
             voltage = voltage + v_step
-            di = 0.5 * (0.5 * (i1 - i2) + 0.5 * (i3 - i2)) / v_delta
 
-            msg = 'I: {:.3f}mA, di: {:.3f}uA'
-            print(msg.format(current * 1e3, di * 1e6))
+            di = 0.5 * (0.5 * (i1 - i2) + 0.5 * (i3 - i2))
+            dv = 0.5 * (0.5 * (v_dut1 - v_dut2) + 0.5 * (v_dut3 - v_dut2))
+            di_dv = di / dv
+            v_dut = (v_dut3 + v_dut2) * 0.5
+
+            msg = 'I: {:.3f}mA, di_dv: {:.3f}mA/V'
+            print(msg.format(current * 1e3, di_dv * 1e3))
             self.writer.write_line(
                 time=time.time() - self.t_start,
                 v_total=voltage,
@@ -288,8 +305,8 @@ class DCMeasurement:
                 current=current,
                 v_dut=v_dut,
                 di_dv=di_dv,
+                di=di,
             )
-
         self.set_dc_voltage(0)
 
 
@@ -297,6 +314,7 @@ if __name__ == '__main__':
     DMM = Agilent34401a()
     DG = DCMeasurement(dmm=DMM, r_shunt=999.8)
 
-    # DG.iv_curve(1, 2.4, 0.005)
-    DG.ac_sweep(1.4, 2.3, 0.01, 0.01)
-    # DG.delta_sweep(v_from=1, v_to=5, v_step=0.01, v_delta=0.05)
+    # DG.iv_curve(0, 0.8, 0.05)
+    DG.ac_sweep(1.2, 2.0, 0.02, 0.05)
+    # DG.delta_sweep(v_from=1, v_to=2.3, v_step=0.05, v_delta=0.05)
+    # DG.delta_sweep(v_from=0, v_to=0.5, v_step=0.025, v_delta=0.05)
